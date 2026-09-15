@@ -3,42 +3,59 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#080808">
+
+<meta
+    name="description"
+    content="BARBER HOUSE — Reserva tu experiencia de barbería. Elige barbero, servicio, extras, productos y horario."
+>
 
 <title>BARBER HOUSE — Grooming Studio</title>
-
-<meta name="description"
-content="Reserva tu experiencia de grooming en Barber House. Elige barbero, servicio, extras, productos y horario.">
 
 <style>
 
 /* =========================================================
    BARBER HOUSE
-   APPLE × LUXURY BARBERSHOP
+   PREMIUM RESPONSIVE BARBERSHOP
 ========================================================= */
 
 :root{
-    --black:#080807;
+    --black:#080808;
     --black-2:#0d0d0c;
-    --black-3:#131311;
+    --black-3:#141311;
+    --panel:#11110f;
 
-    --cream:#f3eee4;
-    --cream-soft:#d8d1c5;
-    --muted:#918c83;
+    --cream:#f4efe7;
+    --cream-soft:#d8d0c3;
+    --muted:#8d877e;
+    --muted-2:#69645d;
 
-    --copper:#b38a5a;
-    --copper-light:#d2ae78;
-    --olive:#87966b;
+    --bronze:#b8875a;
+    --bronze-light:#d4ad7b;
+    --bronze-soft:rgba(184,135,90,.12);
+
+    --green:#87966b;
 
     --white:#fff;
 
-    --border:rgba(243,238,228,.10);
-    --border-light:rgba(243,238,228,.16);
+    --border:rgba(244,239,231,.10);
+    --border-strong:rgba(244,239,231,.16);
 
-    --glass:rgba(255,255,255,.045);
+    --shadow:
+        0 30px 90px rgba(0,0,0,.48);
+
+    --shadow-heavy:
+        0 45px 120px rgba(0,0,0,.65);
 
     --radius:28px;
-    --shadow:0 30px 90px rgba(0,0,0,.48);
+
+    --container:1180px;
 }
 
 
@@ -46,19 +63,36 @@ content="Reserva tu experiencia de grooming en Barber House. Elige barbero, serv
    RESET
 ========================================================= */
 
-*{
-    margin:0;
-    padding:0;
+*,
+*::before,
+*::after{
     box-sizing:border-box;
 }
 
 html{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
     scroll-behavior:smooth;
 }
 
 body{
-    background:var(--black);
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    margin:0;
+    padding:0;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(184,135,90,.07),
+            transparent 30%
+        ),
+        var(--black);
+
     color:var(--cream);
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -69,21 +103,57 @@ body{
         sans-serif;
 
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
 }
-
-
-/* textura extremadamente sutil */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
+
     pointer-events:none;
     z-index:9999;
-    opacity:.025;
+
+    opacity:.018;
 
     background-image:
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+button,
+input,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img,
+svg,
+video,
+iframe{
+    display:block;
+    max-width:100%;
+}
+
+button,
+input,
+textarea{
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+section{
+    position:relative;
+    width:100%;
+    min-width:0;
 }
 
 
@@ -92,53 +162,44 @@ body::before{
 ========================================================= */
 
 .container{
-    width:min(1180px,92%);
-    margin:auto;
-}
-
-button,
-input,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-img{
-    max-width:100%;
-    display:block;
-}
-
-section{
-    position:relative;
+    width:min(var(--container), calc(100% - 40px));
+    margin-inline:auto;
+    min-width:0;
 }
 
 .label{
-    color:var(--copper-light);
+    color:var(--bronze-light);
+
     text-transform:uppercase;
     letter-spacing:3px;
+
     font-size:10px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .section-heading{
+    width:100%;
     max-width:700px;
+    min-width:0;
 }
 
 .section-heading h2{
-    font-size:clamp(42px,6vw,72px);
-    line-height:.96;
+    margin:15px 0 0;
+
+    font-size:clamp(42px, 6vw, 72px);
+    line-height:.94;
     letter-spacing:-4px;
-    margin-top:15px;
 }
 
 .section-heading p{
-    color:var(--muted);
-    line-height:1.7;
-    margin-top:20px;
     max-width:560px;
+
+    margin:20px 0 0;
+
+    color:var(--muted);
+
+    font-size:15px;
+    line-height:1.75;
 }
 
 
@@ -148,84 +209,131 @@ section{
 
 .nav{
     position:fixed;
+
     top:0;
     left:0;
     right:0;
+
+    width:100%;
+
     height:76px;
+
     z-index:1000;
 
-    background:rgba(8,8,7,.72);
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
+    background:rgba(8,8,8,.78);
 
-    border-bottom:1px solid rgba(243,238,228,.07);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border-bottom:1px solid rgba(244,239,231,.07);
 }
 
 .nav-inner{
+    width:min(var(--container), calc(100% - 40px));
     height:100%;
-    width:min(1180px,92%);
+
     margin:auto;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
+
+    gap:15px;
+
+    min-width:0;
 }
 
 .brand{
     display:flex;
     align-items:center;
-    gap:12px;
+
+    gap:11px;
+
+    min-width:0;
 }
 
 .brand-symbol{
-    width:39px;
-    height:39px;
+    flex:0 0 auto;
+
+    width:40px;
+    height:40px;
 
     display:grid;
     place-items:center;
 
-    border:1px solid rgba(179,138,90,.35);
     border-radius:12px;
 
-    background:
-        radial-gradient(circle at 35% 25%,rgba(210,174,120,.25),transparent 35%),
-        linear-gradient(145deg,#211d16,#0c0c0b);
+    border:1px solid rgba(184,135,90,.35);
 
-    color:var(--copper-light);
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(212,173,123,.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #211b14,
+            #0c0c0b
+        );
+
+    color:var(--bronze-light);
 
     box-shadow:
         inset 0 1px rgba(255,255,255,.08),
         0 10px 35px rgba(0,0,0,.4);
 }
 
+.brand-copy{
+    min-width:0;
+}
+
 .brand-name{
     font-size:13px;
-    font-weight:800;
+    font-weight:850;
     letter-spacing:1.2px;
+
+    white-space:nowrap;
 }
 
 .brand-sub{
-    color:#69655e;
-    font-size:8px;
-    letter-spacing:2.4px;
     margin-top:3px;
+
+    color:#69645d;
+
+    font-size:8px;
+    letter-spacing:2.3px;
+
+    white-space:nowrap;
 }
 
 .nav-cta{
-    border:1px solid var(--border-light);
+    flex:0 0 auto;
+
+    border:1px solid var(--border-strong);
+
     background:rgba(255,255,255,.045);
+
     color:var(--cream);
 
     padding:11px 18px;
+
     border-radius:100px;
 
-    transition:.3s;
+    font-size:12px;
+    font-weight:650;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
 }
 
 .nav-cta:hover{
+    transform:translateY(-2px);
+
     background:var(--cream);
     color:#111;
-    transform:translateY(-2px);
 }
 
 
@@ -234,8 +342,12 @@ section{
 ========================================================= */
 
 .hero{
-    min-height:100vh;
-    padding-top:76px;
+    min-height:100svh;
+
+    padding:
+        calc(76px + 55px)
+        0
+        90px;
 
     display:grid;
     align-items:center;
@@ -246,126 +358,169 @@ section{
 .hero-glow{
     position:absolute;
 
-    width:700px;
-    height:700px;
+    width:min(720px, 100vw);
+    aspect-ratio:1;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(179,138,90,.16),
-            rgba(135,150,107,.035) 35%,
+            rgba(184,135,90,.15),
+            rgba(135,150,107,.025) 38%,
             transparent 68%
         );
 
     filter:blur(25px);
 
     left:50%;
-    top:35%;
+    top:38%;
+
     transform:translate(-50%,-50%);
 
     pointer-events:none;
 }
 
 .hero-grid{
+    width:100%;
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,1fr);
+
     gap:70px;
+
     align-items:center;
 }
 
 .hero-copy{
     position:relative;
     z-index:2;
+
+    min-width:0;
 }
 
 .hero-copy h1{
-    font-size:clamp(58px,8vw,105px);
-    line-height:.84;
-    letter-spacing:-7px;
     margin:22px 0 30px;
+
+    font-size:
+        clamp(
+            58px,
+            8vw,
+            105px
+        );
+
+    line-height:.84;
+
+    letter-spacing:-7px;
+
+    max-width:100%;
 }
 
 .hero-copy h1 span{
-    color:#817b71;
+    color:#817a70;
 }
 
 .hero-copy p{
     max-width:540px;
+
     color:#99938a;
-    line-height:1.75;
+
     font-size:17px;
+    line-height:1.75;
 }
 
 .hero-buttons{
     display:flex;
-    gap:12px;
-    margin-top:35px;
     flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:35px;
+}
+
+.btn-primary,
+.btn-secondary{
+    min-height:50px;
+
+    padding:15px 24px;
+
+    border-radius:100px;
+
+    font-size:13px;
+    font-weight:750;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        border-color .3s ease;
 }
 
 .btn-primary{
     border:0;
+
     background:var(--cream);
     color:#111;
 
-    padding:16px 25px;
-    border-radius:100px;
-
-    font-weight:750;
-
     box-shadow:
-        0 12px 35px rgba(243,238,228,.09);
-
-    transition:.3s;
+        0 12px 35px rgba(244,239,231,.09);
 }
 
 .btn-primary:hover{
     transform:translateY(-3px);
+
     box-shadow:
-        0 18px 50px rgba(243,238,228,.16);
+        0 18px 50px rgba(244,239,231,.16);
 }
 
 .btn-secondary{
-    border:1px solid var(--border-light);
+    border:1px solid var(--border-strong);
+
     background:rgba(255,255,255,.035);
+
     color:var(--cream);
-
-    padding:16px 25px;
-    border-radius:100px;
-
-    transition:.3s;
 }
 
 .btn-secondary:hover{
     background:rgba(255,255,255,.08);
+
+    transform:translateY(-2px);
 }
 
 
 /* =========================================================
-   HERO IMAGE
+   HERO VISUAL
 ========================================================= */
 
 .hero-visual{
     position:relative;
-    height:600px;
+
+    width:100%;
+    height:min(600px, 65vw);
+
+    min-height:420px;
+
+    min-width:0;
 }
 
 .hero-photo{
     position:absolute;
     inset:0;
 
-    border-radius:38px;
     overflow:hidden;
+
+    border-radius:38px;
 
     border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-        0 45px 120px rgba(0,0,0,.65),
-        0 0 80px rgba(179,138,90,.07);
+        var(--shadow-heavy),
+        0 0 80px rgba(184,135,90,.07);
 
-    transform:rotate(1.5deg);
+    transform:rotate(1.3deg);
 
     animation:
         heroFloat 7s ease-in-out infinite;
@@ -374,80 +529,95 @@ section{
 .hero-photo img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 
     filter:
-        brightness(.72)
+        brightness(.70)
         contrast(1.08)
         saturate(.78);
 }
 
 .hero-photo::after{
     content:"";
+
     position:absolute;
     inset:0;
 
     background:
         linear-gradient(
             135deg,
-            rgba(179,138,90,.12),
+            rgba(184,135,90,.12),
             transparent 35%,
-            rgba(0,0,0,.6)
+            rgba(0,0,0,.62)
         );
 }
 
 @keyframes heroFloat{
-    0%,100%{
-        transform:rotate(1.5deg) translateY(0);
+
+    0%,
+    100%{
+        transform:rotate(1.3deg) translateY(0);
     }
 
     50%{
-        transform:rotate(1.5deg) translateY(-12px);
+        transform:rotate(1.3deg) translateY(-10px);
     }
 }
 
 .hero-card{
     position:absolute;
-    z-index:4;
 
-    left:-45px;
-    bottom:35px;
+    z-index:5;
+
+    left:-42px;
+    bottom:30px;
 
     width:240px;
+    max-width:calc(100% - 20px);
 
     padding:20px;
 
     border-radius:22px;
 
     background:
-        rgba(18,18,16,.78);
+        rgba(18,18,16,.82);
 
-    border:1px solid rgba(243,238,228,.12);
+    border:1px solid rgba(244,239,231,.12);
 
     backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
     box-shadow:
         0 30px 80px rgba(0,0,0,.6);
 }
 
 .hero-card .small{
-    color:#77736c;
+    color:#777168;
+
     font-size:9px;
+
     letter-spacing:2px;
+
     text-transform:uppercase;
 }
 
 .hero-card strong{
     display:block;
+
     margin-top:9px;
+
     font-size:20px;
 }
 
 .hero-card span{
     display:block;
-    color:var(--copper-light);
-    font-size:11px;
+
     margin-top:6px;
+
+    color:var(--bronze-light);
+
+    font-size:11px;
 }
 
 
@@ -462,7 +632,7 @@ section{
     background:
         linear-gradient(
             90deg,
-            rgba(179,138,90,.035),
+            rgba(184,135,90,.035),
             transparent,
             rgba(135,150,107,.025)
         );
@@ -470,11 +640,16 @@ section{
 
 .experience-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
 }
 
 .experience-item{
+    min-width:0;
+
     padding:28px 20px;
+
     border-right:1px solid var(--border);
 }
 
@@ -484,12 +659,15 @@ section{
 
 .experience-item strong{
     display:block;
-    font-size:14px;
+
     margin-bottom:5px;
+
+    font-size:14px;
 }
 
 .experience-item span{
-    color:#706c65;
+    color:#706b63;
+
     font-size:11px;
 }
 
@@ -504,39 +682,58 @@ section{
 
 .services-head{
     display:flex;
+
     justify-content:space-between;
-    align-items:end;
+    align-items:flex-end;
+
     gap:30px;
+
     margin-bottom:50px;
+}
+
+.services-description{
+    max-width:320px;
+
+    color:#777168;
+
+    font-size:12px;
+
+    line-height:1.7;
 }
 
 .services-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
     gap:14px;
 }
 
 .service-card{
     position:relative;
+
+    min-width:0;
     min-height:390px;
 
     overflow:hidden;
 
     border-radius:26px;
+
     border:1px solid var(--border);
 
     background:#11110f;
 
     transition:
-        transform .45s,
-        border-color .45s,
-        box-shadow .45s;
+        transform .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease;
 }
 
 .service-card:hover{
     transform:translateY(-8px);
 
-    border-color:rgba(179,138,90,.35);
+    border-color:rgba(184,135,90,.35);
 
     box-shadow:
         0 35px 70px rgba(0,0,0,.48);
@@ -550,6 +747,7 @@ section{
 .service-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 
     filter:
@@ -557,10 +755,10 @@ section{
         contrast(1.08)
         saturate(.72);
 
-    transition:.6s;
+    transition:transform .6s ease;
 }
 
-.service-card:hover img{
+.service-card:hover .service-image img{
     transform:scale(1.06);
 }
 
@@ -579,9 +777,12 @@ section{
 
 .service-content{
     position:absolute;
+
     left:22px;
     right:22px;
     bottom:22px;
+
+    min-width:0;
 }
 
 .service-icon{
@@ -591,36 +792,42 @@ section{
     display:grid;
     place-items:center;
 
-    border:1px solid rgba(179,138,90,.25);
+    margin-bottom:18px;
+
+    border:1px solid rgba(184,135,90,.25);
+
     border-radius:13px;
 
-    background:rgba(179,138,90,.09);
+    background:rgba(184,135,90,.09);
 
-    color:var(--copper-light);
-
-    margin-bottom:18px;
+    color:var(--bronze-light);
 }
 
 .service-content h3{
+    margin:0 0 7px;
+
     font-size:20px;
-    margin-bottom:7px;
 }
 
 .service-content p{
-    color:#9b968e;
+    color:#9b958c;
+
     font-size:11px;
+
     line-height:1.5;
 }
 
 .service-price{
     margin-top:16px;
+
     color:var(--cream);
-    font-weight:700;
+
+    font-weight:750;
 }
 
 
 /* =========================================================
-   BOOKING SECTION
+   BOOKING
 ========================================================= */
 
 .booking{
@@ -629,24 +836,34 @@ section{
     background:
         radial-gradient(
             circle at 80% 30%,
-            rgba(179,138,90,.07),
+            rgba(184,135,90,.07),
             transparent 30%
         );
 }
 
 .booking-intro{
     display:flex;
+
     justify-content:space-between;
-    align-items:end;
+    align-items:flex-end;
+
     gap:40px;
+
     margin-bottom:55px;
 }
 
 .booking-intro-right{
-    color:#77736b;
     max-width:350px;
+
+    color:#777168;
+
     font-size:12px;
+
     line-height:1.7;
+}
+
+.booking-intro-right strong{
+    color:#aaa49b;
 }
 
 
@@ -656,17 +873,31 @@ section{
 
 .booking-layout{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 360px;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(280px,360px);
+
     gap:22px;
+
     align-items:start;
 }
 
 
 /* =========================================================
-   FORM CARD
+   BOOKING MAIN
 ========================================================= */
 
 .booking-main{
+    width:100%;
+    min-width:0;
+
+    padding:34px;
+
+    border:1px solid var(--border);
+
+    border-radius:32px;
+
     background:
         linear-gradient(
             145deg,
@@ -674,15 +905,10 @@ section{
             rgba(255,255,255,.025)
         );
 
-    border:1px solid var(--border);
-
-    border-radius:32px;
-
-    padding:34px;
-
     box-shadow:var(--shadow);
 
     backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 }
 
 
@@ -691,67 +917,89 @@ section{
 ========================================================= */
 
 .steps{
+    width:100%;
+
     display:flex;
+
     gap:6px;
 
     margin-bottom:45px;
 
-    overflow:auto;
+    overflow-x:auto;
+
+    overscroll-behavior-x:contain;
+
+    scrollbar-width:none;
+
+    padding-bottom:3px;
+}
+
+.steps::-webkit-scrollbar{
+    display:none;
 }
 
 .step-indicator{
-    min-width:120px;
+    flex:0 0 auto;
 
     display:flex;
     align-items:center;
+
     gap:9px;
 
-    padding:10px 13px;
+    min-height:43px;
+
+    padding:9px 13px;
 
     border-radius:100px;
 
     color:#625f58;
 
     font-size:10px;
+
     white-space:nowrap;
 }
 
 .step-indicator.active{
     color:var(--cream);
 
-    background:rgba(179,138,90,.09);
+    background:rgba(184,135,90,.09);
 
-    border:1px solid rgba(179,138,90,.18);
+    border:1px solid rgba(184,135,90,.18);
 }
 
 .step-number{
     width:22px;
     height:22px;
 
-    border-radius:50%;
+    flex:0 0 auto;
 
     display:grid;
     place-items:center;
+
+    border-radius:50%;
 
     background:rgba(255,255,255,.06);
 
     font-size:9px;
 }
 
-.active .step-number{
-    background:var(--copper);
+.step-indicator.active .step-number{
+    background:var(--bronze);
     color:#111;
 }
 
 
 /* =========================================================
-   FORM STEP
+   FORM STEPS
 ========================================================= */
 
 .form-step{
     display:none;
 
-    animation:stepIn .45s ease;
+    width:100%;
+    min-width:0;
+
+    animation:stepIn .4s ease;
 }
 
 .form-step.active{
@@ -759,6 +1007,7 @@ section{
 }
 
 @keyframes stepIn{
+
     from{
         opacity:0;
         transform:translateY(10px);
@@ -775,14 +1024,21 @@ section{
 }
 
 .step-heading h3{
+    margin:0;
+
     font-size:29px;
+
     letter-spacing:-1.5px;
 }
 
 .step-heading p{
-    color:#77736b;
+    margin:8px 0 0;
+
+    color:#777168;
+
     font-size:12px;
-    margin-top:8px;
+
+    line-height:1.6;
 }
 
 
@@ -792,40 +1048,53 @@ section{
 
 .barbers{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
     gap:12px;
 }
 
 .barber{
     position:relative;
 
-    border:1px solid var(--border);
-    border-radius:22px;
+    min-width:0;
 
     overflow:hidden;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
 
     background:#10100f;
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 .barber:hover{
     transform:translateY(-4px);
-    border-color:rgba(179,138,90,.28);
+
+    border-color:rgba(184,135,90,.28);
 }
 
 .barber.selected{
-    border-color:var(--copper);
+    border-color:var(--bronze);
 
     box-shadow:
-        0 0 0 1px rgba(179,138,90,.12),
+        0 0 0 1px rgba(184,135,90,.12),
         0 20px 40px rgba(0,0,0,.3);
 }
 
 .barber input{
-    display:none;
+    position:absolute;
+
+    opacity:0;
+    pointer-events:none;
 }
 
 .barber-photo{
@@ -835,49 +1104,62 @@ section{
 .barber-photo img{
     width:100%;
     height:100%;
-    object-fit:cover;
-    filter:grayscale(.25) brightness(.72);
 
-    transition:.5s;
+    object-fit:cover;
+
+    filter:
+        grayscale(.2)
+        brightness(.72);
+
+    transition:transform .5s ease;
 }
 
-.barber:hover img{
+.barber:hover .barber-photo img{
     transform:scale(1.05);
 }
 
 .barber-info{
     padding:17px;
+
+    min-width:0;
 }
 
 .barber-info strong{
     display:block;
+
     font-size:15px;
 }
 
 .barber-info span{
-    color:#77736b;
-    font-size:10px;
     display:block;
+
     margin-top:5px;
+
+    color:#777168;
+
+    font-size:10px;
 }
 
 .selected-mark{
     position:absolute;
+
     top:12px;
     right:12px;
 
     width:27px;
     height:27px;
 
-    border-radius:50%;
-
     display:grid;
     place-items:center;
 
-    background:var(--copper);
+    border-radius:50%;
+
+    background:var(--bronze);
+
     color:#111;
 
     opacity:0;
+
     transform:scale(.7);
 
     transition:.3s;
@@ -895,54 +1177,76 @@ section{
 
 .service-options{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
     gap:12px;
 }
 
 .service-option{
     position:relative;
 
+    min-width:0;
+
     padding:21px;
 
     border:1px solid var(--border);
+
     border-radius:20px;
 
     background:rgba(255,255,255,.025);
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
 }
 
 .service-option:hover{
     background:rgba(255,255,255,.055);
+
+    transform:translateY(-2px);
 }
 
 .service-option.selected{
-    border-color:var(--copper);
-    background:rgba(179,138,90,.07);
+    border-color:var(--bronze);
+
+    background:rgba(184,135,90,.07);
 }
 
 .service-option input{
-    display:none;
+    position:absolute;
+
+    opacity:0;
+    pointer-events:none;
 }
 
 .service-option h4{
+    margin:0;
+
     font-size:16px;
 }
 
 .service-option p{
-    color:#77736b;
+    margin:7px 0 0;
+
+    color:#777168;
+
     font-size:11px;
-    margin-top:7px;
+
     line-height:1.5;
 }
 
 .service-option .price{
-    color:var(--copper-light);
-    font-weight:700;
-    font-size:13px;
     margin-top:16px;
+
+    color:var(--bronze-light);
+
+    font-size:13px;
+    font-weight:750;
 }
 
 
@@ -952,48 +1256,72 @@ section{
 
 .extras{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
     gap:10px;
 }
 
 .extra{
+    min-width:0;
+
     padding:17px;
 
     border:1px solid var(--border);
+
     border-radius:18px;
 
     background:rgba(255,255,255,.025);
 
     cursor:pointer;
 
-    transition:.25s;
+    transition:
+        background .25s ease,
+        border-color .25s ease;
+}
+
+.extra:hover{
+    background:rgba(255,255,255,.05);
 }
 
 .extra.selected{
     background:rgba(135,150,107,.09);
+
     border-color:rgba(135,150,107,.45);
 }
 
 .extra input{
-    display:none;
+    position:absolute;
+
+    opacity:0;
+    pointer-events:none;
 }
 
 .extra strong{
+    display:block;
+
     font-size:13px;
 }
 
 .extra span{
     display:block;
-    color:#77736b;
-    font-size:10px;
+
     margin-top:5px;
+
+    color:#777168;
+
+    font-size:10px;
 }
 
 .extra b{
     display:block;
-    color:var(--olive);
-    font-size:11px;
+
     margin-top:10px;
+
+    color:var(--green);
+
+    font-size:11px;
 }
 
 
@@ -1003,56 +1331,85 @@ section{
 
 .products{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
     gap:12px;
 }
 
 .product{
     display:flex;
+
     align-items:center;
     justify-content:space-between;
+
     gap:15px;
+
+    min-width:0;
 
     padding:18px;
 
     border:1px solid var(--border);
+
     border-radius:20px;
 
     background:rgba(255,255,255,.025);
 }
 
+.product-info{
+    min-width:0;
+}
+
 .product-info strong{
+    display:block;
+
     font-size:13px;
 }
 
 .product-info span{
     display:block;
-    color:#77736b;
-    font-size:10px;
+
     margin-top:5px;
+
+    color:#777168;
+
+    font-size:10px;
 }
 
 .product-price{
-    color:var(--copper-light);
-    font-size:11px;
     margin-top:9px;
+
+    color:var(--bronze-light);
+
+    font-size:11px;
 }
 
 .quantity{
+    flex:0 0 auto;
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
 }
 
 .qty-btn{
-    width:28px;
-    height:28px;
+    width:30px;
+    height:30px;
+
+    flex:0 0 auto;
+
+    display:grid;
+    place-items:center;
 
     border-radius:50%;
 
-    border:1px solid var(--border-light);
+    border:1px solid var(--border-strong);
 
     background:rgba(255,255,255,.045);
+
     color:var(--cream);
 
     transition:.2s;
@@ -1065,13 +1422,15 @@ section{
 
 .qty{
     min-width:18px;
+
     text-align:center;
+
     font-size:12px;
 }
 
 
 /* =========================================================
-   DATE + TIME
+   DATE / TIME
 ========================================================= */
 
 .date-box{
@@ -1080,17 +1439,23 @@ section{
 
 .date-box label{
     display:block;
-    color:#77736b;
-    font-size:10px;
+
     margin-bottom:8px;
+
+    color:#777168;
+
+    font-size:10px;
 }
 
 .date-box input{
     width:100%;
 
-    padding:15px;
+    min-height:50px;
+
+    padding:14px 15px;
 
     border:1px solid var(--border);
+
     border-radius:15px;
 
     background:rgba(255,255,255,.04);
@@ -1098,29 +1463,55 @@ section{
     color:var(--cream);
 
     outline:none;
+
+    color-scheme:dark;
+}
+
+.date-box input:focus{
+    border-color:rgba(184,135,90,.55);
+
+    box-shadow:
+        0 0 0 3px rgba(184,135,90,.055);
 }
 
 .time-title{
     display:flex;
+
     justify-content:space-between;
     align-items:center;
+
+    gap:15px;
 
     margin-bottom:13px;
 }
 
+.time-title strong{
+    font-size:12px;
+}
+
 .time-title span{
-    color:#77736b;
+    color:#777168;
+
     font-size:10px;
+
+    text-align:right;
 }
 
 .times{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
     gap:8px;
 }
 
 .time{
-    padding:13px 5px;
+    min-width:0;
+
+    min-height:45px;
+
+    padding:10px 5px;
 
     border-radius:13px;
 
@@ -1132,29 +1523,40 @@ section{
 
     font-size:11px;
 
-    transition:.25s;
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
 }
 
 .time:hover:not(:disabled){
-    border-color:var(--copper);
+    border-color:var(--bronze);
+
+    transform:translateY(-2px);
 }
 
 .time.selected{
-    background:var(--copper);
+    background:var(--bronze);
+
     color:#111;
-    border-color:var(--copper);
+
+    border-color:var(--bronze);
+
     font-weight:800;
 }
 
 .time.busy{
     opacity:.25;
+
     cursor:not-allowed;
+
     text-decoration:line-through;
 }
 
 .time.pending{
-    color:var(--copper-light);
-    border-color:rgba(179,138,90,.35);
+    color:var(--bronze-light);
+
+    border-color:rgba(184,135,90,.35);
 }
 
 
@@ -1164,13 +1566,19 @@ section{
 
 .inputs{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
     gap:12px;
 }
 
 .field{
+    min-width:0;
+
     display:flex;
     flex-direction:column;
+
     gap:7px;
 }
 
@@ -1179,13 +1587,16 @@ section{
 }
 
 .field label{
-    color:#77736b;
+    color:#777168;
+
     font-size:10px;
 }
 
 .field input,
 .field textarea{
     width:100%;
+
+    min-width:0;
 
     padding:15px;
 
@@ -1201,7 +1612,9 @@ section{
 
     resize:none;
 
-    transition:.25s;
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
 .field textarea{
@@ -1210,20 +1623,28 @@ section{
 
 .field input:focus,
 .field textarea:focus{
-    border-color:rgba(179,138,90,.55);
+    border-color:rgba(184,135,90,.55);
 
     box-shadow:
-        0 0 0 3px rgba(179,138,90,.055);
+        0 0 0 3px rgba(184,135,90,.055);
+}
+
+.field input::placeholder,
+.field textarea::placeholder{
+    color:#5e5a54;
 }
 
 
 /* =========================================================
-   NAVIGATION BUTTONS
+   FORM ACTIONS
 ========================================================= */
 
 .form-actions{
     display:flex;
+
     justify-content:space-between;
+    align-items:center;
+
     gap:12px;
 
     margin-top:35px;
@@ -1234,15 +1655,27 @@ section{
 
 .next,
 .back{
-    padding:14px 21px;
+    min-height:47px;
+
+    padding:13px 21px;
+
     border-radius:100px;
-    transition:.3s;
+
+    font-size:12px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
 }
 
 .next{
     border:0;
+
     background:var(--cream);
+
     color:#111;
+
     font-weight:750;
 }
 
@@ -1251,13 +1684,17 @@ section{
 }
 
 .back{
-    border:1px solid var(--border-light);
+    border:1px solid var(--border-strong);
+
     background:rgba(255,255,255,.03);
-    color:#aaa;
+
+    color:#aaa49b;
 }
 
 .back:hover{
     color:white;
+
+    background:rgba(255,255,255,.07);
 }
 
 
@@ -1267,26 +1704,30 @@ section{
 
 .summary{
     position:sticky;
+
     top:96px;
+
+    width:100%;
+    min-width:0;
+
+    overflow:hidden;
+
+    padding:27px;
+
+    border:1px solid rgba(184,135,90,.16);
+
+    border-radius:30px;
 
     background:
         linear-gradient(
             150deg,
-            rgba(179,138,90,.085),
+            rgba(184,135,90,.085),
             rgba(255,255,255,.035) 45%,
             rgba(135,150,107,.035)
         );
 
-    border:1px solid rgba(179,138,90,.16);
-
-    border-radius:30px;
-
-    padding:27px;
-
     box-shadow:
         0 35px 90px rgba(0,0,0,.55);
-
-    overflow:hidden;
 }
 
 .summary::before{
@@ -1300,102 +1741,144 @@ section{
     right:-100px;
     top:-100px;
 
-    background:rgba(179,138,90,.10);
     border-radius:50%;
+
+    background:rgba(184,135,90,.10);
+
     filter:blur(45px);
+
+    pointer-events:none;
 }
 
 .summary-head{
     position:relative;
 
     display:flex;
+
     justify-content:space-between;
     align-items:center;
+
+    gap:15px;
 
     margin-bottom:25px;
 }
 
 .summary-head h3{
+    margin:0;
+
     font-size:19px;
 }
 
 .live{
     display:flex;
+
     align-items:center;
+
     gap:6px;
 
-    color:var(--olive);
+    color:var(--green);
+
     font-size:9px;
+
     letter-spacing:1px;
+
+    white-space:nowrap;
 }
 
 .live i{
     width:6px;
     height:6px;
-    background:var(--olive);
+
     border-radius:50%;
-    box-shadow:0 0 12px var(--olive);
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
 }
 
 .summary-line{
     display:flex;
+
     justify-content:space-between;
+    align-items:flex-start;
+
     gap:15px;
 
     padding:13px 0;
 
-    border-bottom:1px solid rgba(243,238,228,.07);
+    border-bottom:1px solid rgba(244,239,231,.07);
 
     font-size:11px;
 }
 
 .summary-line span{
-    color:#77736b;
+    flex:0 0 auto;
+
+    color:#777168;
 }
 
 .summary-line strong{
+    min-width:0;
+
     text-align:right;
-    max-width:190px;
+
+    max-width:65%;
+
+    overflow-wrap:anywhere;
 }
 
 .summary-total{
     display:flex;
+
     justify-content:space-between;
-    align-items:end;
+    align-items:flex-end;
+
+    gap:15px;
 
     margin-top:25px;
 }
 
 .summary-total small{
-    color:#77736b;
     display:block;
+
+    color:#777168;
+
     font-size:9px;
 }
 
 .total{
     font-size:32px;
-    font-weight:800;
+
+    font-weight:850;
+
     letter-spacing:-1.5px;
+
+    white-space:nowrap;
 }
 
 .confirm{
     width:100%;
 
-    border:0;
+    min-height:52px;
 
-    padding:17px;
+    margin-top:24px;
+
+    padding:16px;
+
+    border:0;
 
     border-radius:16px;
 
-    background:var(--olive);
+    background:var(--green);
 
     color:#10110d;
 
     font-weight:800;
 
-    margin-top:24px;
-
-    transition:.3s;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
 }
 
 .confirm:hover{
@@ -1406,12 +1889,15 @@ section{
 }
 
 .summary-note{
-    color:#656159;
-    font-size:9px;
-    line-height:1.6;
-    text-align:center;
-
     margin-top:14px;
+
+    color:#656159;
+
+    font-size:9px;
+
+    line-height:1.6;
+
+    text-align:center;
 }
 
 
@@ -1423,17 +1909,28 @@ section{
     padding:0 0 140px;
 }
 
+.location-heading{
+    margin-bottom:45px;
+}
+
 .location-grid{
     display:grid;
-    grid-template-columns:330px 1fr;
+
+    grid-template-columns:
+        minmax(280px,330px)
+        minmax(0,1fr);
+
     gap:20px;
 }
 
 .location-card{
-    border:1px solid var(--border);
-    border-radius:28px;
+    min-width:0;
 
     padding:30px;
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
 
     background:
         linear-gradient(
@@ -1446,13 +1943,16 @@ section{
 }
 
 .location-card h3{
-    font-size:25px;
     margin:14px 0 15px;
+
+    font-size:25px;
 }
 
 .location-card p{
-    color:#77736b;
+    color:#777168;
+
     font-size:12px;
+
     line-height:1.7;
 }
 
@@ -1462,27 +1962,37 @@ section{
 
 .location-info div{
     padding:15px 0;
+
     border-bottom:1px solid var(--border);
 }
 
 .location-info strong{
     display:block;
-    font-size:11px;
+
     margin-bottom:5px;
+
+    font-size:11px;
 }
 
 .location-info span{
-    color:#77736b;
+    color:#777168;
+
     font-size:10px;
+
+    overflow-wrap:anywhere;
 }
 
 .map{
+    width:100%;
+    min-width:0;
+
     min-height:450px;
 
-    border:1px solid var(--border);
-    border-radius:30px;
-
     overflow:hidden;
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
 
     box-shadow:var(--shadow);
 }
@@ -1490,6 +2000,7 @@ section{
 .map iframe{
     width:100%;
     height:100%;
+
     min-height:450px;
 
     border:0;
@@ -1517,7 +2028,10 @@ footer{
 
 .footer{
     display:flex;
+
     justify-content:space-between;
+    align-items:center;
+
     gap:20px;
 }
 
@@ -1532,16 +2046,22 @@ footer{
 
 .modal{
     position:fixed;
+
     inset:0;
 
     display:none;
     place-items:center;
 
-    padding:20px;
+    padding:
+        max(16px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(16px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
 
     background:rgba(0,0,0,.78);
 
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
     z-index:3000;
 }
@@ -1551,7 +2071,11 @@ footer{
 }
 
 .modal-box{
-    width:min(460px,100%);
+    width:min(460px, 100%);
+
+    max-height:90dvh;
+
+    overflow:auto;
 
     padding:34px;
 
@@ -1559,7 +2083,7 @@ footer{
 
     background:#12120f;
 
-    border:1px solid rgba(179,138,90,.25);
+    border:1px solid rgba(184,135,90,.25);
 
     box-shadow:
         0 50px 120px rgba(0,0,0,.7);
@@ -1568,13 +2092,18 @@ footer{
 }
 
 @keyframes modalIn{
+
     from{
         opacity:0;
-        transform:translateY(20px) scale(.96);
+
+        transform:
+            translateY(20px)
+            scale(.96);
     }
 
     to{
         opacity:1;
+
         transform:none;
     }
 }
@@ -1586,49 +2115,77 @@ footer{
     display:grid;
     place-items:center;
 
+    margin-bottom:22px;
+
     border-radius:18px;
 
     background:rgba(135,150,107,.12);
 
-    color:var(--olive);
+    color:var(--green);
 
     font-size:23px;
-
-    margin-bottom:22px;
 }
 
 .modal h3{
+    margin:0;
+
     font-size:27px;
+
     letter-spacing:-1px;
 }
 
 .modal p{
+    margin:10px 0 0;
+
     color:#817c73;
+
     font-size:13px;
+
     line-height:1.7;
-    margin-top:10px;
 }
 
 .modal button{
     width:100%;
+
     margin-top:25px;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   SCROLL REVEAL
 ========================================================= */
 
-@media(max-width:1000px){
+.reveal{
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media(max-width:1050px){
 
     .hero-grid{
         grid-template-columns:1fr;
-        gap:40px;
+
+        gap:50px;
     }
 
     .hero{
         padding-top:125px;
-        padding-bottom:80px;
     }
 
     .hero-copy{
@@ -1636,7 +2193,7 @@ footer{
     }
 
     .hero-copy p{
-        margin:auto;
+        margin-inline:auto;
     }
 
     .hero-buttons{
@@ -1644,13 +2201,15 @@ footer{
     }
 
     .hero-visual{
+        width:min(650px,100%);
         height:500px;
-        width:min(600px,100%);
-        margin:auto;
+
+        margin-inline:auto;
     }
 
     .services-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
     }
 
     .booking-layout{
@@ -1669,14 +2228,86 @@ footer{
 }
 
 
-@media(max-width:700px){
+/* =========================================================
+   TABLET
+========================================================= */
 
-    .experience-grid{
-        grid-template-columns:1fr 1fr;
+@media(max-width:760px){
+
+    .container,
+    .nav-inner{
+        width:min(
+            100% - 32px,
+            var(--container)
+        );
     }
 
-    .experience-item:nth-child(2){
+    .hero{
+        padding:
+            120px 0
+            70px;
+    }
+
+    .hero-copy h1{
+        font-size:
+            clamp(
+                52px,
+                14vw,
+                78px
+            );
+
+        letter-spacing:-5px;
+    }
+
+    .hero-copy p{
+        font-size:15px;
+    }
+
+    .hero-buttons{
+        width:100%;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+        flex:1 1 180px;
+
+        justify-content:center;
+
+        text-align:center;
+    }
+
+    .hero-visual{
+        height:460px;
+        min-height:0;
+    }
+
+    .hero-card{
+        left:14px;
+        bottom:18px;
+    }
+
+    .experience-grid{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+    .experience-item{
+        padding:22px 15px;
+
+        border-right:1px solid var(--border);
+        border-bottom:1px solid var(--border);
+    }
+
+    .experience-item:nth-child(2n){
         border-right:0;
+    }
+
+    .experience-item:nth-last-child(-n+2){
+        border-bottom:0;
+    }
+
+    .services{
+        padding:100px 0;
     }
 
     .services-head,
@@ -1684,6 +2315,7 @@ footer{
         display:block;
     }
 
+    .services-description,
     .booking-intro-right{
         margin-top:20px;
     }
@@ -1692,12 +2324,26 @@ footer{
         grid-template-columns:1fr;
     }
 
+    .service-card{
+        min-height:430px;
+    }
+
+    .booking{
+        padding:100px 0 110px;
+    }
+
+    .booking-main{
+        padding:24px;
+
+        border-radius:26px;
+    }
+
     .barbers{
         grid-template-columns:1fr;
     }
 
     .barber-photo{
-        height:230px;
+        height:250px;
     }
 
     .service-options,
@@ -1712,52 +2358,374 @@ footer{
     }
 
     .times{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
     }
 
-    .booking-main{
-        padding:21px;
-        border-radius:25px;
+    .location{
+        padding-bottom:100px;
     }
 
-    .hero-card{
-        left:10px;
-        bottom:20px;
+    .map,
+    .map iframe{
+        min-height:380px;
+    }
+
+    .footer{
+        align-items:flex-start;
+
+        flex-direction:column;
     }
 
 }
 
 
-@media(max-width:450px){
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:520px){
+
+    .container,
+    .nav-inner{
+        width:calc(100% - 28px);
+    }
+
+    .nav{
+        height:68px;
+    }
+
+    .nav-inner{
+        width:calc(100% - 24px);
+    }
+
+    .brand-symbol{
+        width:36px;
+        height:36px;
+
+        border-radius:11px;
+    }
+
+    .brand-name{
+        font-size:11px;
+    }
+
+    .brand-sub{
+        font-size:7px;
+
+        letter-spacing:1.8px;
+    }
+
+    .nav-cta{
+        padding:9px 14px;
+
+        font-size:11px;
+    }
+
+    .hero{
+        padding:
+            105px 0
+            60px;
+    }
 
     .hero-copy h1{
-        font-size:57px;
+        margin-top:18px;
+        margin-bottom:24px;
+
+        font-size:
+            clamp(
+                48px,
+                15vw,
+                68px
+            );
+
         letter-spacing:-4px;
     }
 
+    .hero-copy p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+
+        gap:9px;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+        width:100%;
+        flex:0 0 auto;
+    }
+
     .hero-visual{
-        height:430px;
+        height:390px;
+    }
+
+    .hero-photo{
+        border-radius:28px;
     }
 
     .hero-card{
         width:200px;
+
         padding:16px;
+
+        border-radius:18px;
     }
 
-    .times{
-        grid-template-columns:repeat(2,1fr);
+    .hero-card strong{
+        font-size:17px;
     }
 
     .experience-item{
-        padding:23px 12px;
+        padding:20px 12px;
     }
 
     .experience-item strong{
-        font-size:12px;
+        font-size:11px;
     }
 
-    .footer{
-        flex-direction:column;
+    .experience-item span{
+        font-size:9px;
+    }
+
+    .section-heading h2{
+        font-size:
+            clamp(
+                40px,
+                13vw,
+                58px
+            );
+
+        letter-spacing:-3px;
+    }
+
+    .services{
+        padding:85px 0;
+    }
+
+    .service-card{
+        min-height:400px;
+
+        border-radius:23px;
+    }
+
+    .booking{
+        padding:85px 0 95px;
+    }
+
+    .booking-main{
+        padding:18px;
+
+        border-radius:22px;
+    }
+
+    .steps{
+        margin-bottom:30px;
+    }
+
+    .step-indicator{
+        min-height:39px;
+
+        padding:8px 11px;
+
+        font-size:9px;
+    }
+
+    .step-number{
+        width:20px;
+        height:20px;
+    }
+
+    .step-heading{
+        margin-bottom:24px;
+    }
+
+    .step-heading h3{
+        font-size:25px;
+    }
+
+    .step-heading p{
+        font-size:11px;
+    }
+
+    .barber-photo{
+        height:220px;
+    }
+
+    .service-option{
+        padding:18px;
+    }
+
+    .extra,
+    .product{
+        padding:15px;
+    }
+
+    .time-title{
+        display:block;
+    }
+
+    .time-title span{
+        display:block;
+
+        margin-top:7px;
+
+        text-align:left;
+    }
+
+    .times{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+    .time{
+        min-height:46px;
+    }
+
+    .form-actions{
+        flex-direction:column-reverse;
+
+        align-items:stretch;
+    }
+
+    .form-actions .next,
+    .form-actions .back{
+        width:100%;
+    }
+
+    .summary{
+        padding:21px;
+
+        border-radius:23px;
+    }
+
+    .total{
+        font-size:28px;
+    }
+
+    .location-card{
+        padding:23px;
+
+        border-radius:23px;
+    }
+
+    .map,
+    .map iframe{
+        min-height:330px;
+
+        border-radius:23px;
+    }
+
+    .modal-box{
+        padding:24px;
+
+        border-radius:24px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+    .container,
+    .nav-inner{
+        width:calc(100% - 22px);
+    }
+
+    .brand-sub{
+        display:none;
+    }
+
+    .nav-cta{
+        padding:8px 12px;
+    }
+
+    .hero-copy h1{
+        font-size:46px;
+
+        letter-spacing:-3px;
+    }
+
+    .hero-visual{
+        height:350px;
+    }
+
+    .hero-card{
+        width:175px;
+
+        padding:13px;
+    }
+
+    .hero-card strong{
+        font-size:15px;
+    }
+
+    .hero-card span{
+        font-size:9px;
+    }
+
+    .experience-item strong{
+        font-size:10px;
+    }
+
+    .experience-item span{
+        font-size:8px;
+    }
+
+    .booking-main{
+        padding:15px;
+    }
+
+    .summary{
+        padding:18px;
+    }
+
+    .summary-line{
+        font-size:10px;
+    }
+
+    .total{
+        font-size:25px;
+    }
+
+}
+
+
+/* =========================================================
+   SAFE AREA
+========================================================= */
+
+@supports(padding:max(0px)){
+
+    .nav{
+        padding-top:env(safe-area-inset-top);
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
+
+        scroll-behavior:auto !important;
     }
 
 }
@@ -1775,34 +2743,39 @@ footer{
 
 <nav class="nav">
 
-<div class="nav-inner">
+    <div class="nav-inner">
 
-    <div class="brand">
+        <div class="brand">
 
-        <div class="brand-symbol">
-            ✦
-        </div>
-
-        <div>
-            <div class="brand-name">
-                BARBER HOUSE
+            <div class="brand-symbol">
+                ✦
             </div>
 
-            <div class="brand-sub">
-                GROOMING STUDIO
+            <div class="brand-copy">
+
+                <div class="brand-name">
+                    BARBER HOUSE
+                </div>
+
+                <div class="brand-sub">
+                    GROOMING STUDIO
+                </div>
+
             </div>
+
         </div>
+
+        <button
+            class="nav-cta"
+            type="button"
+            onclick="goBooking()"
+        >
+            Reservar
+        </button>
 
     </div>
 
-    <button class="nav-cta" onclick="goBooking()">
-        Reservar
-    </button>
-
-</div>
-
 </nav>
-
 
 
 <!-- =========================================================
@@ -1811,1479 +2784,1584 @@ footer{
 
 <header class="hero">
 
-<div class="hero-glow"></div>
+    <div class="hero-glow"></div>
 
-<div class="container">
+    <div class="container">
 
-<div class="hero-grid">
+        <div class="hero-grid">
 
+            <div class="hero-copy reveal">
 
-    <div class="hero-copy">
+                <div class="label">
+                    Barbería · Grooming · Estilo
+                </div>
 
-        <div class="label">
-            Barbería · Grooming · Estilo
-        </div>
+                <h1>
+                    Tu estilo.<br>
+                    <span>Elevado.</span>
+                </h1>
 
-        <h1>
-            Tu estilo.<br>
-            <span>Elevado.</span>
-        </h1>
+                <p>
+                    Una experiencia de barbería diseñada para
+                    quienes entienden que los detalles hacen
+                    la diferencia.
+                </p>
 
-        <p>
-            Una experiencia de barbería diseñada para quienes
-            entienden que los detalles hacen la diferencia.
-            Reserva tu espacio y deja el resto en nuestras manos.
-        </p>
+                <div class="hero-buttons">
 
-        <div class="hero-buttons">
+                    <button
+                        class="btn-primary"
+                        type="button"
+                        onclick="goBooking()"
+                    >
+                        Reservar mi cita
+                    </button>
 
-            <button class="btn-primary" onclick="goBooking()">
-                Reservar mi cita
-            </button>
+                    <button
+                        class="btn-secondary"
+                        type="button"
+                        onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})"
+                    >
+                        Explorar servicios
+                    </button>
 
-            <button class="btn-secondary"
-                    onclick="document.getElementById('services').scrollIntoView()">
-                Explorar servicios
-            </button>
+                </div>
 
-        </div>
-
-    </div>
-
-
-
-    <div class="hero-visual">
-
-        <div class="hero-photo">
-
-            <!-- FOTO DE BARBERÍA -->
-            <img
-                src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=85"
-                alt="Barbero trabajando"
-            >
-
-        </div>
-
-
-        <div class="hero-card">
-
-            <div class="small">
-                Experiencia
             </div>
 
-            <strong>
-                Grooming premium
-            </strong>
 
-            <span>
-                Reserva · Relájate · Disfruta
-            </span>
+            <div class="hero-visual reveal">
+
+                <div class="hero-photo">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=85"
+                        alt="Barbero trabajando"
+                        loading="eager"
+                    >
+
+                </div>
+
+                <div class="hero-card">
+
+                    <div class="small">
+                        Experiencia
+                    </div>
+
+                    <strong>
+                        Grooming premium
+                    </strong>
+
+                    <span>
+                        Reserva · Relájate · Disfruta
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
-
-
-</div>
-
-</div>
 
 </header>
 
 
-
 <!-- =========================================================
-     EXPERIENCE STRIP
+     EXPERIENCE
 ========================================================= -->
 
 <section class="experience">
 
-<div class="container">
+    <div class="container">
 
-<div class="experience-grid">
+        <div class="experience-grid">
 
-    <div class="experience-item">
-        <strong>Barberos profesionales</strong>
-        <span>Experiencia y precisión.</span>
+            <div class="experience-item">
+                <strong>
+                    Barberos profesionales
+                </strong>
+                <span>
+                    Experiencia y precisión.
+                </span>
+            </div>
+
+            <div class="experience-item">
+                <strong>
+                    Productos premium
+                </strong>
+                <span>
+                    Seleccionados para tu estilo.
+                </span>
+            </div>
+
+            <div class="experience-item">
+                <strong>
+                    Reserva sencilla
+                </strong>
+                <span>
+                    Agenda en pocos pasos.
+                </span>
+            </div>
+
+            <div class="experience-item">
+                <strong>
+                    Atención personalizada
+                </strong>
+                <span>
+                    Cada visita es diferente.
+                </span>
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="experience-item">
-        <strong>Productos premium</strong>
-        <span>Seleccionados para tu estilo.</span>
-    </div>
-
-    <div class="experience-item">
-        <strong>Reserva sencilla</strong>
-        <span>Agenda en pocos pasos.</span>
-    </div>
-
-    <div class="experience-item">
-        <strong>Atención personalizada</strong>
-        <span>Cada visita es diferente.</span>
-    </div>
-
-</div>
-
-</div>
 
 </section>
-
 
 
 <!-- =========================================================
-     SERVICES SHOWCASE
+     SERVICES
 ========================================================= -->
 
-<section class="services" id="services">
+<section
+    class="services"
+    id="services"
+>
 
-<div class="container">
+    <div class="container">
 
-<div class="services-head">
+        <div class="services-head reveal">
 
-    <div class="section-heading">
+            <div class="section-heading">
 
-        <div class="label">
-            Nuestros servicios
+                <div class="label">
+                    Nuestros servicios
+                </div>
+
+                <h2>
+                    El detalle<br>
+                    importa.
+                </h2>
+
+            </div>
+
+            <p class="services-description">
+                Desde un corte limpio hasta una experiencia
+                completa de grooming. Elige lo que mejor
+                se adapte a ti.
+            </p>
+
         </div>
 
-        <h2>
-            El detalle<br>
-            importa.
-        </h2>
+
+        <div class="services-grid">
+
+
+            <article class="service-card reveal">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=85"
+                        alt="Corte de cabello"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-overlay"></div>
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        ✂
+                    </div>
+
+                    <h3>
+                        Corte
+                    </h3>
+
+                    <p>
+                        Corte personalizado y styling.
+                    </p>
+
+                    <div class="service-price">
+                        $250 MXN
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85"
+                        alt="Barba"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-overlay"></div>
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        ◒
+                    </div>
+
+                    <h3>
+                        Barba
+                    </h3>
+
+                    <p>
+                        Perfilado, diseño y acabado.
+                    </p>
+
+                    <div class="service-price">
+                        $180 MXN
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1512690459411-b0fd4f3b9b2a?auto=format&fit=crop&w=900&q=85"
+                        alt="Corte y barba"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-overlay"></div>
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Corte + Barba
+                    </h3>
+
+                    <p>
+                        La combinación clásica.
+                    </p>
+
+                    <div class="service-price">
+                        $350 MXN
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=900&q=85"
+                        alt="Grooming premium"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-overlay"></div>
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        ✧
+                    </div>
+
+                    <h3>
+                        Premium
+                    </h3>
+
+                    <p>
+                        Experiencia completa.
+                    </p>
+
+                    <div class="service-price">
+                        $450 MXN
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
 
     </div>
 
-    <p style="color:#77736b;max-width:320px;font-size:12px;line-height:1.7;">
-        Desde un corte limpio hasta una experiencia completa
-        de grooming. Elige lo que mejor se adapte a ti.
-    </p>
-
-</div>
-
-
-<div class="services-grid">
-
-
-    <article class="service-card">
-
-        <div class="service-image">
-
-            <img
-                src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=85"
-                alt="Corte de cabello"
-            >
-
-        </div>
-
-        <div class="service-overlay"></div>
-
-        <div class="service-content">
-
-            <div class="service-icon">
-                ✂
-            </div>
-
-            <h3>
-                Corte
-            </h3>
-
-            <p>
-                Corte personalizado y styling.
-            </p>
-
-            <div class="service-price">
-                $250 MXN
-            </div>
-
-        </div>
-
-    </article>
-
-
-
-    <article class="service-card">
-
-        <div class="service-image">
-
-            <img
-                src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85"
-                alt="Barba"
-            >
-
-        </div>
-
-        <div class="service-overlay"></div>
-
-        <div class="service-content">
-
-            <div class="service-icon">
-                ◒
-            </div>
-
-            <h3>
-                Barba
-            </h3>
-
-            <p>
-                Perfilado, diseño y acabado.
-            </p>
-
-            <div class="service-price">
-                $180 MXN
-            </div>
-
-        </div>
-
-    </article>
-
-
-
-    <article class="service-card">
-
-        <div class="service-image">
-
-            <img
-                src="https://images.unsplash.com/photo-1512690459411-b0fd4f3b9b2a?auto=format&fit=crop&w=900&q=85"
-                alt="Barbería"
-            >
-
-        </div>
-
-        <div class="service-overlay"></div>
-
-        <div class="service-content">
-
-            <div class="service-icon">
-                ✦
-            </div>
-
-            <h3>
-                Corte + Barba
-            </h3>
-
-            <p>
-                La combinación clásica.
-            </p>
-
-            <div class="service-price">
-                $350 MXN
-            </div>
-
-        </div>
-
-    </article>
-
-
-
-    <article class="service-card">
-
-        <div class="service-image">
-
-            <img
-                src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=900&q=85"
-                alt="Grooming premium"
-            >
-
-        </div>
-
-        <div class="service-overlay"></div>
-
-        <div class="service-content">
-
-            <div class="service-icon">
-                ✧
-            </div>
-
-            <h3>
-                Premium
-            </h3>
-
-            <p>
-                Experiencia completa.
-            </p>
-
-            <div class="service-price">
-                $450 MXN
-            </div>
-
-        </div>
-
-    </article>
-
-
-</div>
-
-</div>
-
 </section>
-
 
 
 <!-- =========================================================
      BOOKING
 ========================================================= -->
 
-<section class="booking" id="booking">
+<section
+    class="booking"
+    id="booking"
+>
 
-<div class="container">
+    <div class="container">
 
+        <div class="booking-intro reveal">
 
-<div class="booking-intro">
+            <div class="section-heading">
 
-    <div class="section-heading">
+                <div class="label">
+                    Reserva
+                </div>
 
-        <div class="label">
-            Reserva
+                <h2>
+                    Diseña tu visita.
+                </h2>
+
+                <p>
+                    Selecciona cada detalle de tu experiencia.
+                    Al final enviaremos tu solicitud directamente
+                    por WhatsApp.
+                </p>
+
+            </div>
+
+            <div class="booking-intro-right">
+
+                <strong>
+                    Sin registros. Sin contraseñas.
+                </strong>
+
+                <br><br>
+
+                Tu solicitud se prepara en la página y se envía
+                directamente a la barbería para confirmar
+                disponibilidad.
+
+            </div>
+
         </div>
 
-        <h2>
-            Diseña tu visita.
-        </h2>
 
-        <p>
-            Selecciona cada detalle de tu experiencia.
-            Al final enviaremos tu solicitud directamente
-            por WhatsApp.
-        </p>
-
-    </div>
-
-    <div class="booking-intro-right">
-
-        <strong style="color:#aaa49b;">
-            Sin registros. Sin contraseñas.
-        </strong>
-
-        <br>
-
-        Tu solicitud se prepara en la página y se envía
-        directamente a la barbería para confirmar disponibilidad.
-
-    </div>
-
-</div>
+        <div class="booking-layout">
 
 
+            <!-- =================================================
+                 MAIN FORM
+            ================================================= -->
 
-<div class="booking-layout">
-
-
-<!-- =====================================================
-     MAIN FORM
-===================================================== -->
-
-<div class="booking-main">
+            <div class="booking-main">
 
 
-<!-- STEPS -->
+                <!-- STEPS -->
 
-<div class="steps">
+                <div class="steps">
 
-    <div class="step-indicator active" data-step="1">
-        <div class="step-number">1</div>
-        Barbero
-    </div>
+                    <div
+                        class="step-indicator active"
+                        data-step="1"
+                    >
+                        <div class="step-number">1</div>
+                        Barbero
+                    </div>
 
-    <div class="step-indicator" data-step="2">
-        <div class="step-number">2</div>
-        Servicio
-    </div>
+                    <div
+                        class="step-indicator"
+                        data-step="2"
+                    >
+                        <div class="step-number">2</div>
+                        Servicio
+                    </div>
 
-    <div class="step-indicator" data-step="3">
-        <div class="step-number">3</div>
-        Extras
-    </div>
+                    <div
+                        class="step-indicator"
+                        data-step="3"
+                    >
+                        <div class="step-number">3</div>
+                        Extras
+                    </div>
 
-    <div class="step-indicator" data-step="4">
-        <div class="step-number">4</div>
-        Productos
-    </div>
+                    <div
+                        class="step-indicator"
+                        data-step="4"
+                    >
+                        <div class="step-number">4</div>
+                        Productos
+                    </div>
 
-    <div class="step-indicator" data-step="5">
-        <div class="step-number">5</div>
-        Horario
-    </div>
+                    <div
+                        class="step-indicator"
+                        data-step="5"
+                    >
+                        <div class="step-number">5</div>
+                        Horario
+                    </div>
 
-    <div class="step-indicator" data-step="6">
-        <div class="step-number">6</div>
-        Datos
-    </div>
+                    <div
+                        class="step-indicator"
+                        data-step="6"
+                    >
+                        <div class="step-number">6</div>
+                        Datos
+                    </div>
 
-</div>
-
-
-
-<!-- =====================================================
-     STEP 1
-===================================================== -->
-
-<div class="form-step active" data-form="1">
-
-    <div class="step-heading">
-
-        <h3>
-            ¿Con quién quieres tu cita?
-        </h3>
-
-        <p>
-            Puedes elegir un barbero específico o dejarlo
-            a disponibilidad.
-        </p>
-
-    </div>
+                </div>
 
 
-    <div class="barbers">
+                <!-- =================================================
+                     STEP 1
+                ================================================= -->
 
-
-        <label class="barber selected">
-
-            <input
-                type="radio"
-                name="barber"
-                value="Sin preferencia"
-                checked
-                onchange="updateAll()"
-            >
-
-            <div class="barber-photo">
-
-                <img
-                    src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=700&q=85"
-                    alt="Barbero"
+                <div
+                    class="form-step active"
+                    data-form="1"
                 >
 
-            </div>
+                    <div class="step-heading">
 
-            <div class="barber-info">
+                        <h3>
+                            ¿Con quién quieres tu cita?
+                        </h3>
 
-                <strong>
-                    Sin preferencia
-                </strong>
+                        <p>
+                            Puedes elegir un barbero específico
+                            o dejarlo a disponibilidad.
+                        </p>
 
-                <span>
-                    El barbero disponible
-                </span>
-
-            </div>
-
-            <div class="selected-mark">
-                ✓
-            </div>
-
-        </label>
+                    </div>
 
 
+                    <div class="barbers">
 
-        <label class="barber">
 
-            <input
-                type="radio"
-                name="barber"
-                value="Carlos"
-                onchange="updateAll()"
-            >
+                        <label class="barber selected">
 
-            <div class="barber-photo">
+                            <input
+                                type="radio"
+                                name="barber"
+                                value="Sin preferencia"
+                                checked
+                            >
 
-                <img
-                    src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed5?auto=format&fit=crop&w=700&q=85"
-                    alt="Carlos"
+                            <div class="barber-photo">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=700&q=85"
+                                    alt="Sin preferencia"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                            <div class="barber-info">
+
+                                <strong>
+                                    Sin preferencia
+                                </strong>
+
+                                <span>
+                                    El barbero disponible
+                                </span>
+
+                            </div>
+
+                            <div class="selected-mark">
+                                ✓
+                            </div>
+
+                        </label>
+
+
+                        <label class="barber">
+
+                            <input
+                                type="radio"
+                                name="barber"
+                                value="Carlos"
+                            >
+
+                            <div class="barber-photo">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed5?auto=format&fit=crop&w=700&q=85"
+                                    alt="Carlos"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                            <div class="barber-info">
+
+                                <strong>
+                                    Carlos
+                                </strong>
+
+                                <span>
+                                    Fades · Modernos
+                                </span>
+
+                            </div>
+
+                            <div class="selected-mark">
+                                ✓
+                            </div>
+
+                        </label>
+
+
+                        <label class="barber">
+
+                            <input
+                                type="radio"
+                                name="barber"
+                                value="Alex"
+                            >
+
+                            <div class="barber-photo">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alex"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                            <div class="barber-info">
+
+                                <strong>
+                                    Alex
+                                </strong>
+
+                                <span>
+                                    Barba · Diseño
+                                </span>
+
+                            </div>
+
+                            <div class="selected-mark">
+                                ✓
+                            </div>
+
+                        </label>
+
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <span></span>
+
+                        <button
+                            class="next"
+                            type="button"
+                            onclick="nextStep(2)"
+                        >
+                            Continuar →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STEP 2
+                ================================================= -->
+
+                <div
+                    class="form-step"
+                    data-form="2"
                 >
 
-            </div>
+                    <div class="step-heading">
 
-            <div class="barber-info">
+                        <h3>
+                            Elige tu servicio.
+                        </h3>
 
-                <strong>
-                    Carlos
-                </strong>
+                        <p>
+                            Selecciona el servicio principal
+                            de tu visita.
+                        </p>
 
-                <span>
-                    Fades · Modernos
-                </span>
-
-            </div>
-
-            <div class="selected-mark">
-                ✓
-            </div>
-
-        </label>
+                    </div>
 
 
+                    <div class="service-options">
 
-        <label class="barber">
 
-            <input
-                type="radio"
-                name="barber"
-                value="Alex"
-                onchange="updateAll()"
-            >
+                        <label class="service-option selected">
 
-            <div class="barber-photo">
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Corte de cabello"
+                                data-price="250"
+                                checked
+                            >
 
-                <img
-                    src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=700&q=85"
-                    alt="Alex"
+                            <h4>
+                                Corte de cabello
+                            </h4>
+
+                            <p>
+                                Corte personalizado + styling.
+                            </p>
+
+                            <div class="price">
+                                $250 MXN
+                            </div>
+
+                        </label>
+
+
+                        <label class="service-option">
+
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Corte + Barba"
+                                data-price="350"
+                            >
+
+                            <h4>
+                                Corte + Barba
+                            </h4>
+
+                            <p>
+                                Corte completo + perfilado de barba.
+                            </p>
+
+                            <div class="price">
+                                $350 MXN
+                            </div>
+
+                        </label>
+
+
+                        <label class="service-option">
+
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Barba"
+                                data-price="180"
+                            >
+
+                            <h4>
+                                Barba
+                            </h4>
+
+                            <p>
+                                Diseño, perfilado y acabado.
+                            </p>
+
+                            <div class="price">
+                                $180 MXN
+                            </div>
+
+                        </label>
+
+
+                        <label class="service-option">
+
+                            <input
+                                type="radio"
+                                name="service"
+                                value="Corte Premium"
+                                data-price="450"
+                            >
+
+                            <h4>
+                                Corte Premium
+                            </h4>
+
+                            <p>
+                                Experiencia completa de grooming.
+                            </p>
+
+                            <div class="price">
+                                $450 MXN
+                            </div>
+
+                        </label>
+
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            class="back"
+                            type="button"
+                            onclick="nextStep(1)"
+                        >
+                            ← Atrás
+                        </button>
+
+                        <button
+                            class="next"
+                            type="button"
+                            onclick="nextStep(3)"
+                        >
+                            Continuar →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STEP 3
+                ================================================= -->
+
+                <div
+                    class="form-step"
+                    data-form="3"
                 >
 
-            </div>
+                    <div class="step-heading">
 
-            <div class="barber-info">
+                        <h3>
+                            Hazlo aún mejor.
+                        </h3>
 
-                <strong>
-                    Alex
-                </strong>
+                        <p>
+                            Añade los detalles que quieras
+                            a tu experiencia.
+                        </p>
 
-                <span>
-                    Barba · Diseño
-                </span>
+                    </div>
 
-            </div>
 
-            <div class="selected-mark">
-                ✓
-            </div>
+                    <div class="extras">
 
-        </label>
 
+                        <label class="extra">
 
-    </div>
+                            <input
+                                type="checkbox"
+                                value="Mascarilla facial"
+                                data-price="100"
+                            >
 
+                            <strong>
+                                Mascarilla facial
+                            </strong>
 
-    <div class="form-actions">
+                            <span>
+                                Tratamiento refrescante.
+                            </span>
 
-        <span></span>
+                            <b>
+                                +$100
+                            </b>
 
-        <button class="next" onclick="nextStep(2)">
-            Continuar →
-        </button>
+                        </label>
 
-    </div>
 
-</div>
+                        <label class="extra">
 
+                            <input
+                                type="checkbox"
+                                value="Corte de ceja"
+                                data-price="60"
+                            >
 
+                            <strong>
+                                Corte de ceja
+                            </strong>
 
-<!-- =====================================================
-     STEP 2
-===================================================== -->
+                            <span>
+                                Perfilado y diseño.
+                            </span>
 
-<div class="form-step" data-form="2">
+                            <b>
+                                +$60
+                            </b>
 
-    <div class="step-heading">
+                        </label>
 
-        <h3>
-            Elige tu servicio.
-        </h3>
 
-        <p>
-            Selecciona el servicio principal de tu visita.
-        </p>
+                        <label class="extra">
 
-    </div>
+                            <input
+                                type="checkbox"
+                                value="Lavado premium"
+                                data-price="80"
+                            >
 
+                            <strong>
+                                Lavado premium
+                            </strong>
 
-    <div class="service-options">
+                            <span>
+                                Lavado + tratamiento.
+                            </span>
 
+                            <b>
+                                +$80
+                            </b>
 
-        <label class="service-option selected">
+                        </label>
 
-            <input
-                type="radio"
-                name="service"
-                value="Corte de cabello"
-                data-price="250"
-                checked
-                onchange="updateAll()"
-            >
 
-            <h4>
-                Corte de cabello
-            </h4>
+                        <label class="extra">
 
-            <p>
-                Corte personalizado + styling.
-            </p>
+                            <input
+                                type="checkbox"
+                                value="Styling premium"
+                                data-price="70"
+                            >
 
-            <div class="price">
-                $250 MXN
-            </div>
+                            <strong>
+                                Styling premium
+                            </strong>
 
-        </label>
+                            <span>
+                                Acabado profesional.
+                            </span>
 
+                            <b>
+                                +$70
+                            </b>
 
+                        </label>
 
-        <label class="service-option">
 
-            <input
-                type="radio"
-                name="service"
-                value="Corte + Barba"
-                data-price="350"
-                onchange="updateAll()"
-            >
+                    </div>
 
-            <h4>
-                Corte + Barba
-            </h4>
 
-            <p>
-                Corte completo + perfilado de barba.
-            </p>
+                    <div class="form-actions">
 
-            <div class="price">
-                $350 MXN
-            </div>
+                        <button
+                            class="back"
+                            type="button"
+                            onclick="nextStep(2)"
+                        >
+                            ← Atrás
+                        </button>
 
-        </label>
+                        <button
+                            class="next"
+                            type="button"
+                            onclick="nextStep(4)"
+                        >
+                            Continuar →
+                        </button>
 
+                    </div>
 
+                </div>
 
-        <label class="service-option">
 
-            <input
-                type="radio"
-                name="service"
-                value="Barba"
-                data-price="180"
-                onchange="updateAll()"
-            >
+                <!-- =================================================
+                     STEP 4
+                ================================================= -->
 
-            <h4>
-                Barba
-            </h4>
+                <div
+                    class="form-step"
+                    data-form="4"
+                >
 
-            <p>
-                Diseño, perfilado y acabado.
-            </p>
+                    <div class="step-heading">
 
-            <div class="price">
-                $180 MXN
-            </div>
+                        <h3>
+                            Llévate el estilo contigo.
+                        </h3>
 
-        </label>
+                        <p>
+                            Agrega productos directamente
+                            a tu reserva.
+                        </p>
 
+                    </div>
 
 
-        <label class="service-option">
+                    <div class="products">
 
-            <input
-                type="radio"
-                name="service"
-                value="Corte Premium"
-                data-price="450"
-                onchange="updateAll()"
-            >
 
-            <h4>
-                Corte Premium
-            </h4>
+                        <div class="product">
 
-            <p>
-                Experiencia completa de grooming.
-            </p>
+                            <div class="product-info">
 
-            <div class="price">
-                $450 MXN
-            </div>
+                                <strong>
+                                    Pomada Matte
+                                </strong>
 
-        </label>
+                                <span>
+                                    Acabado natural
+                                </span>
 
+                                <div class="product-price">
+                                    $220 MXN
+                                </div>
 
-    </div>
+                            </div>
 
+                            <div class="quantity">
 
-    <div class="form-actions">
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('pomada',-1)"
+                                >
+                                    −
+                                </button>
 
-        <button class="back" onclick="nextStep(1)">
-            ← Atrás
-        </button>
+                                <span
+                                    class="qty"
+                                    id="pomadaQty"
+                                >
+                                    0
+                                </span>
 
-        <button class="next" onclick="nextStep(3)">
-            Continuar →
-        </button>
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('pomada',1)"
+                                >
+                                    +
+                                </button>
 
-    </div>
+                            </div>
 
-</div>
+                        </div>
 
 
+                        <div class="product">
 
-<!-- =====================================================
-     STEP 3
-===================================================== -->
+                            <div class="product-info">
 
-<div class="form-step" data-form="3">
+                                <strong>
+                                    Cera Premium
+                                </strong>
 
-    <div class="step-heading">
+                                <span>
+                                    Fijación fuerte
+                                </span>
 
-        <h3>
-            Hazlo aún mejor.
-        </h3>
+                                <div class="product-price">
+                                    $250 MXN
+                                </div>
 
-        <p>
-            Añade los detalles que quieras a tu experiencia.
-        </p>
+                            </div>
 
-    </div>
+                            <div class="quantity">
 
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('cera',-1)"
+                                >
+                                    −
+                                </button>
 
-    <div class="extras">
+                                <span
+                                    class="qty"
+                                    id="ceraQty"
+                                >
+                                    0
+                                </span>
 
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('cera',1)"
+                                >
+                                    +
+                                </button>
 
-        <label class="extra">
+                            </div>
 
-            <input
-                type="checkbox"
-                value="Mascarilla facial"
-                data-price="100"
-                onchange="toggleExtra(this);updateAll()"
-            >
+                        </div>
 
-            <strong>
-                Mascarilla facial
-            </strong>
 
-            <span>
-                Tratamiento refrescante.
-            </span>
+                        <div class="product">
 
-            <b>
-                +$100
-            </b>
+                            <div class="product-info">
 
-        </label>
+                                <strong>
+                                    Aceite para barba
+                                </strong>
 
+                                <span>
+                                    Hidratación
+                                </span>
 
+                                <div class="product-price">
+                                    $280 MXN
+                                </div>
 
-        <label class="extra">
+                            </div>
 
-            <input
-                type="checkbox"
-                value="Corte de ceja"
-                data-price="60"
-                onchange="toggleExtra(this);updateAll()"
-            >
+                            <div class="quantity">
 
-            <strong>
-                Corte de ceja
-            </strong>
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('aceite',-1)"
+                                >
+                                    −
+                                </button>
 
-            <span>
-                Perfilado y diseño.
-            </span>
+                                <span
+                                    class="qty"
+                                    id="aceiteQty"
+                                >
+                                    0
+                                </span>
 
-            <b>
-                +$60
-            </b>
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('aceite',1)"
+                                >
+                                    +
+                                </button>
 
-        </label>
+                            </div>
 
+                        </div>
 
 
-        <label class="extra">
+                        <div class="product">
 
-            <input
-                type="checkbox"
-                value="Lavado premium"
-                data-price="80"
-                onchange="toggleExtra(this);updateAll()"
-            >
+                            <div class="product-info">
 
-            <strong>
-                Lavado premium
-            </strong>
+                                <strong>
+                                    Shampoo Premium
+                                </strong>
 
-            <span>
-                Lavado + tratamiento.
-            </span>
+                                <span>
+                                    Uso diario
+                                </span>
 
-            <b>
-                +$80
-            </b>
+                                <div class="product-price">
+                                    $190 MXN
+                                </div>
 
-        </label>
+                            </div>
 
+                            <div class="quantity">
 
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('shampoo',-1)"
+                                >
+                                    −
+                                </button>
 
-        <label class="extra">
+                                <span
+                                    class="qty"
+                                    id="shampooQty"
+                                >
+                                    0
+                                </span>
 
-            <input
-                type="checkbox"
-                value="Styling premium"
-                data-price="70"
-                onchange="toggleExtra(this);updateAll()"
-            >
+                                <button
+                                    class="qty-btn"
+                                    type="button"
+                                    onclick="changeQty('shampoo',1)"
+                                >
+                                    +
+                                </button>
 
-            <strong>
-                Styling premium
-            </strong>
+                            </div>
 
-            <span>
-                Acabado profesional.
-            </span>
+                        </div>
 
-            <b>
-                +$70
-            </b>
 
-        </label>
+                    </div>
 
 
-    </div>
+                    <div class="form-actions">
 
+                        <button
+                            class="back"
+                            type="button"
+                            onclick="nextStep(3)"
+                        >
+                            ← Atrás
+                        </button>
 
-    <div class="form-actions">
+                        <button
+                            class="next"
+                            type="button"
+                            onclick="nextStep(5)"
+                        >
+                            Elegir horario →
+                        </button>
 
-        <button class="back" onclick="nextStep(2)">
-            ← Atrás
-        </button>
+                    </div>
 
-        <button class="next" onclick="nextStep(4)">
-            Continuar →
-        </button>
+                </div>
 
-    </div>
 
-</div>
+                <!-- =================================================
+                     STEP 5
+                ================================================= -->
 
+                <div
+                    class="form-step"
+                    data-form="5"
+                >
 
+                    <div class="step-heading">
 
-<!-- =====================================================
-     STEP 4
-===================================================== -->
+                        <h3>
+                            Encuentra tu momento.
+                        </h3>
 
-<div class="form-step" data-form="4">
+                        <p>
+                            Selecciona la fecha y después
+                            el horario que prefieras.
+                        </p>
 
-    <div class="step-heading">
+                    </div>
 
-        <h3>
-            Llévate el estilo contigo.
-        </h3>
 
-        <p>
-            Agrega productos directamente a tu reserva.
-        </p>
+                    <div class="date-box">
 
-    </div>
+                        <label for="date">
+                            FECHA
+                        </label>
 
+                        <input
+                            type="date"
+                            id="date"
+                        >
 
-    <div class="products">
+                    </div>
 
 
-        <div class="product">
+                    <div class="time-title">
 
-            <div class="product-info">
+                        <strong>
+                            Horarios disponibles
+                        </strong>
 
-                <strong>
-                    Pomada Matte
-                </strong>
+                        <span>
+                            Los horarios tachados están ocupados.
+                        </span>
 
-                <span>
-                    Acabado natural
-                </span>
+                    </div>
 
-                <div class="product-price">
-                    $220 MXN
+
+                    <div
+                        class="times"
+                        id="times"
+                    ></div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            class="back"
+                            type="button"
+                            onclick="nextStep(4)"
+                        >
+                            ← Atrás
+                        </button>
+
+                        <button
+                            class="next"
+                            type="button"
+                            onclick="validateScheduleStep()"
+                        >
+                            Mis datos →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STEP 6
+                ================================================= -->
+
+                <div
+                    class="form-step"
+                    data-form="6"
+                >
+
+                    <div class="step-heading">
+
+                        <h3>
+                            Último detalle.
+                        </h3>
+
+                        <p>
+                            Necesitamos estos datos para enviarte
+                            la confirmación.
+                        </p>
+
+                    </div>
+
+
+                    <div class="inputs">
+
+
+                        <div class="field">
+
+                            <label for="name">
+                                NOMBRE
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                autocomplete="name"
+                                placeholder="Tu nombre"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="phone">
+                                TELÉFONO
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                autocomplete="tel"
+                                inputmode="tel"
+                                placeholder="55 0000 0000"
+                            >
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label for="notes">
+                                NOTA PARA EL BARBERO · OPCIONAL
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                placeholder="Ej. Quiero un fade bajo y conservar algo de volumen..."
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            class="back"
+                            type="button"
+                            onclick="nextStep(5)"
+                        >
+                            ← Atrás
+                        </button>
+
+                        <button
+                            class="next"
+                            type="button"
+                            onclick="sendWhatsApp()"
+                        >
+                            Enviar solicitud →
+                        </button>
+
+                    </div>
+
                 </div>
 
             </div>
 
-            <div class="quantity">
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('pomada',-1)">
-                    −
-                </button>
+            <!-- =================================================
+                 SUMMARY
+            ================================================= -->
 
-                <span
-                    class="qty"
-                    id="pomadaQty">
-                    0
-                </span>
+            <aside class="summary">
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('pomada',1)">
-                    +
-                </button>
+                <div class="summary-head">
 
-            </div>
+                    <h3>
+                        Tu experiencia
+                    </h3>
 
-        </div>
+                    <div class="live">
+                        <i></i>
+                        RESERVA
+                    </div>
 
-
-
-        <div class="product">
-
-            <div class="product-info">
-
-                <strong>
-                    Cera Premium
-                </strong>
-
-                <span>
-                    Fijación fuerte
-                </span>
-
-                <div class="product-price">
-                    $250 MXN
                 </div>
 
-            </div>
 
-            <div class="quantity">
+                <div class="summary-line">
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('cera',-1)">
-                    −
-                </button>
+                    <span>
+                        Barbero
+                    </span>
 
-                <span
-                    class="qty"
-                    id="ceraQty">
-                    0
-                </span>
+                    <strong id="summaryBarber">
+                        Sin preferencia
+                    </strong>
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('cera',1)">
-                    +
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="product">
-
-            <div class="product-info">
-
-                <strong>
-                    Aceite para barba
-                </strong>
-
-                <span>
-                    Hidratación
-                </span>
-
-                <div class="product-price">
-                    $280 MXN
                 </div>
 
-            </div>
 
-            <div class="quantity">
+                <div class="summary-line">
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('aceite',-1)">
-                    −
-                </button>
+                    <span>
+                        Servicio
+                    </span>
 
-                <span
-                    class="qty"
-                    id="aceiteQty">
-                    0
-                </span>
+                    <strong id="summaryService">
+                        Corte de cabello
+                    </strong>
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('aceite',1)">
-                    +
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="product">
-
-            <div class="product-info">
-
-                <strong>
-                    Shampoo Premium
-                </strong>
-
-                <span>
-                    Uso diario
-                </span>
-
-                <div class="product-price">
-                    $190 MXN
                 </div>
 
-            </div>
 
-            <div class="quantity">
+                <div class="summary-line">
+
+                    <span>
+                        Extras
+                    </span>
+
+                    <strong id="summaryExtras">
+                        Ninguno
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Productos
+                    </span>
+
+                    <strong id="summaryProducts">
+                        Ninguno
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Fecha
+                    </span>
+
+                    <strong id="summaryDate">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Hora
+                    </span>
+
+                    <strong id="summaryTime">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <div>
+                        <small>
+                            TOTAL ESTIMADO
+                        </small>
+                    </div>
+
+                    <div
+                        class="total"
+                        id="total"
+                    >
+                        $250
+                    </div>
+
+                </div>
+
 
                 <button
-                    class="qty-btn"
-                    onclick="changeQty('shampoo',-1)">
-                    −
+                    class="confirm"
+                    type="button"
+                    onclick="goToLastStep()"
+                >
+                    Revisar y reservar
                 </button>
 
-                <span
-                    class="qty"
-                    id="shampooQty">
-                    0
-                </span>
 
-                <button
-                    class="qty-btn"
-                    onclick="changeQty('shampoo',1)">
-                    +
-                </button>
+                <div class="summary-note">
 
-            </div>
+                    La solicitud será enviada por WhatsApp.
+                    El horario queda reservado únicamente
+                    después de la confirmación de la barbería.
+
+                </div>
+
+            </aside>
+
 
         </div>
 
-
     </div>
-
-
-    <div class="form-actions">
-
-        <button class="back" onclick="nextStep(3)">
-            ← Atrás
-        </button>
-
-        <button class="next" onclick="nextStep(5)">
-            Elegir horario →
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     STEP 5
-===================================================== -->
-
-<div class="form-step" data-form="5">
-
-    <div class="step-heading">
-
-        <h3>
-            Encuentra tu momento.
-        </h3>
-
-        <p>
-            Selecciona la fecha y después el horario que prefieras.
-        </p>
-
-    </div>
-
-
-    <div class="date-box">
-
-        <label>
-            FECHA
-        </label>
-
-        <input
-            type="date"
-            id="date"
-            onchange="loadTimes()"
-        >
-
-    </div>
-
-
-    <div class="time-title">
-
-        <strong>
-            Horarios disponibles
-        </strong>
-
-        <span>
-            Los horarios tachados están ocupados.
-        </span>
-
-    </div>
-
-
-    <div class="times" id="times"></div>
-
-
-    <div class="form-actions">
-
-        <button class="back" onclick="nextStep(4)">
-            ← Atrás
-        </button>
-
-        <button class="next" onclick="nextStep(6)">
-            Mis datos →
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     STEP 6
-===================================================== -->
-
-<div class="form-step" data-form="6">
-
-    <div class="step-heading">
-
-        <h3>
-            Último detalle.
-        </h3>
-
-        <p>
-            Necesitamos estos datos para enviarte la confirmación.
-        </p>
-
-    </div>
-
-
-    <div class="inputs">
-
-
-        <div class="field">
-
-            <label>
-                NOMBRE
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                placeholder="Tu nombre"
-            >
-
-        </div>
-
-
-
-        <div class="field">
-
-            <label>
-                TELÉFONO
-            </label>
-
-            <input
-                type="tel"
-                id="phone"
-                placeholder="55 0000 0000"
-            >
-
-        </div>
-
-
-
-        <div class="field full">
-
-            <label>
-                NOTA PARA EL BARBERO · OPCIONAL
-            </label>
-
-            <textarea
-                id="notes"
-                placeholder="Ej. Quiero un fade bajo y conservar algo de volumen..."
-            ></textarea>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="form-actions">
-
-        <button class="back" onclick="nextStep(5)">
-            ← Atrás
-        </button>
-
-        <button class="next" onclick="sendWhatsApp()">
-            Enviar solicitud →
-        </button>
-
-    </div>
-
-</div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     SUMMARY
-===================================================== -->
-
-<aside class="summary">
-
-    <div class="summary-head">
-
-        <h3>
-            Tu experiencia
-        </h3>
-
-        <div class="live">
-            <i></i>
-            RESERVA
-        </div>
-
-    </div>
-
-
-    <div class="summary-line">
-
-        <span>
-            Barbero
-        </span>
-
-        <strong id="summaryBarber">
-            Sin preferencia
-        </strong>
-
-    </div>
-
-
-    <div class="summary-line">
-
-        <span>
-            Servicio
-        </span>
-
-        <strong id="summaryService">
-            Corte de cabello
-        </strong>
-
-    </div>
-
-
-    <div class="summary-line">
-
-        <span>
-            Extras
-        </span>
-
-        <strong id="summaryExtras">
-            Ninguno
-        </strong>
-
-    </div>
-
-
-    <div class="summary-line">
-
-        <span>
-            Productos
-        </span>
-
-        <strong id="summaryProducts">
-            Ninguno
-        </strong>
-
-    </div>
-
-
-    <div class="summary-line">
-
-        <span>
-            Fecha
-        </span>
-
-        <strong id="summaryDate">
-            —
-        </strong>
-
-    </div>
-
-
-    <div class="summary-line">
-
-        <span>
-            Hora
-        </span>
-
-        <strong id="summaryTime">
-            —
-        </strong>
-
-    </div>
-
-
-    <div class="summary-total">
-
-        <div>
-            <small>
-                TOTAL ESTIMADO
-            </small>
-        </div>
-
-        <div
-            class="total"
-            id="total">
-            $250
-        </div>
-
-    </div>
-
-
-    <button
-        class="confirm"
-        onclick="goToLastStep()">
-
-        Revisar y reservar
-
-    </button>
-
-
-    <div class="summary-note">
-
-        La solicitud será enviada por WhatsApp.
-        El horario queda reservado únicamente
-        después de la confirmación de la barbería.
-
-    </div>
-
-</aside>
-
-
-</div>
-
-</div>
 
 </section>
-
 
 
 <!-- =========================================================
      LOCATION
 ========================================================= -->
 
-<section class="location" id="location">
+<section
+    class="location"
+    id="location"
+>
 
-<div class="container">
+    <div class="container">
 
-<div class="section-heading" style="margin-bottom:45px;">
+        <div class="section-heading location-heading reveal">
 
-    <div class="label">
-        Encuéntranos
-    </div>
-
-    <h2>
-        Nos vemos<br>
-        aquí.
-    </h2>
-
-    <p>
-        Tu experiencia comienza desde que llegas.
-    </p>
-
-</div>
-
-
-<div class="location-grid">
-
-
-    <div class="location-card">
-
-        <div class="label">
-            Ubicación
-        </div>
-
-        <h3>
-            Barber House
-        </h3>
-
-        <p>
-            Aquí puedes colocar la dirección exacta
-            de la barbería para que tus clientes puedan
-            encontrarla fácilmente.
-        </p>
-
-
-        <div class="location-info">
-
-            <div>
-
-                <strong>
-                    DIRECCIÓN
-                </strong>
-
-                <span>
-                    Ciudad de México, México
-                </span>
-
+            <div class="label">
+                Encuéntranos
             </div>
 
+            <h2>
+                Nos vemos<br>
+                aquí.
+            </h2>
 
-            <div>
-
-                <strong>
-                    WHATSAPP
-                </strong>
-
-                <span>
-                    55 3371 2767
-                </span>
-
-            </div>
-
-
-            <div>
-
-                <strong>
-                    ATENCIÓN
-                </strong>
-
-                <span>
-                    Con cita previa
-                </span>
-
-            </div>
+            <p>
+                Tu experiencia comienza desde que llegas.
+            </p>
 
         </div>
 
+
+        <div class="location-grid">
+
+
+            <div class="location-card reveal">
+
+                <div class="label">
+                    Ubicación
+                </div>
+
+                <h3>
+                    Barber House
+                </h3>
+
+                <p>
+                    Aquí puedes colocar la dirección exacta
+                    de la barbería para que tus clientes puedan
+                    encontrarla fácilmente.
+                </p>
+
+
+                <div class="location-info">
+
+                    <div>
+
+                        <strong>
+                            DIRECCIÓN
+                        </strong>
+
+                        <span>
+                            Ciudad de México, México
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            WHATSAPP
+                        </strong>
+
+                        <span>
+                            55 3371 2767
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ATENCIÓN
+                        </strong>
+
+                        <span>
+                            Con cita previa
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="map reveal">
+
+                <!--
+                    CAMBIA LA UBICACIÓN DEL MAPA AQUÍ.
+
+                    Ejemplo:
+
+                    https://www.google.com/maps?q=Av.+Reforma+123,+CDMX&output=embed
+                -->
+
+                <iframe
+                    src="https://www.google.com/maps?q=Ciudad%20de%20México%2C%20México&output=embed"
+                    title="Ubicación de Barber House"
+                    loading="lazy"
+                    allowfullscreen
+                ></iframe>
+
+            </div>
+
+
+        </div>
+
     </div>
-
-
-
-    <div class="map">
-
-        <!--
-        CAMBIA "Ciudad de México, México"
-        POR LA DIRECCIÓN EXACTA DE LA BARBERÍA.
-
-        Ejemplo:
-        https://www.google.com/maps?q=Av.+Reforma+123,+CDMX&output=embed
-        -->
-
-        <iframe
-            src="https://www.google.com/maps?q=Ciudad%20de%20México%2C%20México&output=embed"
-            loading="lazy"
-            allowfullscreen>
-        </iframe>
-
-    </div>
-
-
-</div>
-
-</div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -3292,61 +4370,69 @@ footer{
 
 <footer>
 
-<div class="container footer">
+    <div class="container footer">
 
-    <div>
-        <strong>
-            BARBER HOUSE
-        </strong>
-        <br>
-        Grooming Studio
+        <div>
+
+            <strong>
+                BARBER HOUSE
+            </strong>
+
+            <br>
+
+            Grooming Studio
+
+        </div>
+
+        <div>
+            Reservas vía WhatsApp · 55 3371 2767
+        </div>
+
     </div>
-
-    <div>
-        Reservas vía WhatsApp · 55 3371 2767
-    </div>
-
-</div>
 
 </footer>
-
 
 
 <!-- =========================================================
      MODAL
 ========================================================= -->
 
-<div class="modal" id="modal">
+<div
+    class="modal"
+    id="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+>
 
-<div class="modal-box">
+    <div class="modal-box">
 
-    <div class="modal-icon">
-        ✓
+        <div class="modal-icon">
+            ✓
+        </div>
+
+        <h3 id="modalTitle">
+            Solicitud preparada.
+        </h3>
+
+        <p>
+            WhatsApp se abrirá con todos los detalles
+            de tu visita. La barbería deberá confirmar
+            la disponibilidad antes de considerar
+            la cita como reservada.
+        </p>
+
+        <button
+            class="btn-primary"
+            type="button"
+            onclick="closeModal()"
+        >
+            Entendido
+        </button>
+
     </div>
 
-    <h3>
-        Solicitud preparada.
-    </h3>
-
-    <p>
-        WhatsApp se abrirá con todos los detalles
-        de tu visita. La barbería deberá confirmar
-        la disponibilidad antes de considerar
-        la cita como reservada.
-    </p>
-
-    <button
-        class="btn-primary"
-        onclick="closeModal()">
-
-        Entendido
-
-    </button>
-
 </div>
-
-</div>
-
 
 
 <script>
@@ -3359,23 +4445,20 @@ footer{
 /*
     WHATSAPP DE LA BARBERÍA
 
-    52 = México
+    México = 52
 */
 
 const WHATSAPP_NUMBER = "525533712767";
 
 
 /*
-    HORARIOS
-
-    Puedes modificar estos horarios.
+    HORARIOS BLOQUEADOS MANUALMENTE.
 
     IMPORTANTE:
 
-    La página NO necesita base de datos.
-
-    Tú puedes bloquear manualmente las citas
-    confirmadas agregándolas aquí.
+    Como esta página funciona sin base de datos,
+    estos horarios son los que puedes bloquear
+    manualmente desde el código.
 
     FORMATO:
 
@@ -3383,8 +4466,8 @@ const WHATSAPP_NUMBER = "525533712767";
 
     Ejemplo:
 
-    "2026-09-20|10:00"
-
+    "2026-09-20|10:00",
+    "2026-09-20|11:00"
 */
 
 const BLOCKED_SLOTS = [
@@ -3465,6 +4548,23 @@ let currentStep = 1;
 
 
 /* =========================================================
+   HELPERS
+========================================================= */
+
+function $(selector){
+
+    return document.querySelector(selector);
+
+}
+
+function $$(selector){
+
+    return [...document.querySelectorAll(selector)];
+
+}
+
+
+/* =========================================================
    INIT
 ========================================================= */
 
@@ -3500,28 +4600,169 @@ document.addEventListener(
 
         updateAll();
 
+        initSelectionEvents();
+
+        initReveal();
+
     }
 );
 
 
 /* =========================================================
-   SCROLL
+   REVEAL ANIMATIONS
 ========================================================= */
 
-function goBooking(){
+function initReveal(){
 
-    document
-        .getElementById("booking")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+    const elements =
+        $$(".reveal");
+
+    if(
+        !("IntersectionObserver" in window)
+    ){
+
+        elements.forEach(
+            element =>
+                element.classList.add("visible")
+        );
+
+        return;
+    }
+
+    const observer =
+        new IntersectionObserver(
+            entries =>{
+
+                entries.forEach(
+                    entry =>{
+
+                        if(
+                            entry.isIntersecting
+                        ){
+
+                            entry.target
+                                .classList
+                                .add("visible");
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    elements.forEach(
+        element =>
+            observer.observe(element)
+    );
 
 }
 
 
-function goToLastStep(){
+/* =========================================================
+   SELECTION EVENTS
+========================================================= */
 
-    nextStep(6);
+function initSelectionEvents(){
+
+    $$(
+        'input[type="radio"]'
+    ).forEach(
+        input =>{
+
+            input.addEventListener(
+                "change",
+                handleRadioChange
+            );
+
+        }
+    );
+
+
+    $$(
+        ".extra input"
+    ).forEach(
+        input =>{
+
+            input.addEventListener(
+                "change",
+                ()=>{
+
+                    const card =
+                        input.closest(".extra");
+
+                    card.classList.toggle(
+                        "selected",
+                        input.checked
+                    );
+
+                    updateAll();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+function handleRadioChange(event){
+
+    const input =
+        event.target;
+
+    const name =
+        input.name;
+
+    $$(
+        `input[name="${name}"]`
+    ).forEach(
+        radio =>{
+
+            const card =
+                radio.closest(
+                    ".barber,.service-option"
+                );
+
+            if(card){
+
+                card.classList.toggle(
+                    "selected",
+                    radio.checked
+                );
+
+            }
+
+        }
+    );
+
+    updateAll();
+
+}
+
+
+/* =========================================================
+   SCROLL TO BOOKING
+========================================================= */
+
+function goBooking(){
+
+    const booking =
+        document.getElementById("booking");
+
+    booking.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
 
 }
 
@@ -3532,99 +4773,107 @@ function goToLastStep(){
 
 function nextStep(step){
 
+    if(
+        step > currentStep &&
+        !validateBeforeStep(step)
+    ){
+
+        return;
+
+    }
+
     currentStep = step;
 
-    document
-        .querySelectorAll(".form-step")
-        .forEach(form=>{
 
-            form.classList.toggle(
-                "active",
-                Number(form.dataset.form) === step
-            );
+    $$(".form-step")
+        .forEach(
+            form =>{
 
-        });
+                form.classList.toggle(
+                    "active",
+                    Number(form.dataset.form) === step
+                );
 
-
-    document
-        .querySelectorAll(".step-indicator")
-        .forEach(indicator=>{
-
-            indicator.classList.toggle(
-                "active",
-                Number(indicator.dataset.step) === step
-            );
-
-        });
+            }
+        );
 
 
-    document
-        .getElementById("booking")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
+    $$(".step-indicator")
+        .forEach(
+            indicator =>{
+
+                indicator.classList.toggle(
+                    "active",
+                    Number(indicator.dataset.step) === step
+                );
+
+            }
+        );
+
+
+    const booking =
+        document.getElementById("booking");
+
+    booking.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+}
+
+
+function validateBeforeStep(step){
+
+    /*
+        No necesitamos validar todos los pasos
+        desde el principio.
+
+        Solo aseguramos que exista un servicio.
+    */
+
+    if(
+        step >= 2 &&
+        !$(
+            'input[name="barber"]:checked'
+        )
+    ){
+
+        alert(
+            "Selecciona un barbero."
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        step >= 3 &&
+        !$(
+            'input[name="service"]:checked'
+        )
+    ){
+
+        alert(
+            "Selecciona un servicio."
+        );
+
+        return false;
+
+    }
+
+    return true;
 
 }
 
 
 /* =========================================================
-   RADIO VISUAL
+   GO TO LAST STEP
 ========================================================= */
 
-document.addEventListener(
-    "change",
-    event=>{
+function goToLastStep(){
 
-        if(
-            event.target.type === "radio"
-        ){
-
-            const name =
-                event.target.name;
-
-            document
-                .querySelectorAll(
-                    `input[name="${name}"]`
-                )
-                .forEach(input=>{
-
-                    input
-                        .closest(
-                            ".barber,.service-option"
-                        )
-                        ?.classList
-                        .remove("selected");
-
-                });
-
-
-            event.target
-                .closest(
-                    ".barber,.service-option"
-                )
-                ?.classList
-                .add("selected");
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   EXTRA VISUAL
-========================================================= */
-
-function toggleExtra(input){
-
-    input
-        .closest(".extra")
-        .classList
-        .toggle(
-            "selected",
-            input.checked
-        );
+    nextStep(6);
 
 }
 
@@ -3635,7 +4884,20 @@ function toggleExtra(input){
 
 function changeQty(product,change){
 
+    if(
+        !Object.prototype.hasOwnProperty.call(
+            quantities,
+            product
+        )
+    ){
+
+        return;
+
+    }
+
+
     quantities[product] += change;
+
 
     if(
         quantities[product] < 0
@@ -3645,12 +4907,19 @@ function changeQty(product,change){
 
     }
 
-    document
-        .getElementById(
+
+    const element =
+        document.getElementById(
             product+"Qty"
-        )
-        .textContent =
+        );
+
+    if(element){
+
+        element.textContent =
             quantities[product];
+
+    }
+
 
     updateAll();
 
@@ -3658,7 +4927,7 @@ function changeQty(product,change){
 
 
 /* =========================================================
-   TIMES
+   LOAD TIMES
 ========================================================= */
 
 function loadTimes(){
@@ -3676,101 +4945,112 @@ function loadTimes(){
 
     if(!date){
 
+        updateAll();
+
         return;
 
     }
 
 
-    SCHEDULE.forEach(time=>{
+    SCHEDULE.forEach(
+        time =>{
 
-        const button =
-            document.createElement("button");
+            const button =
+                document.createElement("button");
 
-        button.type = "button";
+            button.type = "button";
 
-        button.className = "time";
+            button.className = "time";
 
-        button.textContent = time;
-
-
-        const key =
-            `${date}|${time}`;
+            button.textContent = time;
 
 
-        /*
-            BLOQUEO MANUAL
-        */
-
-        if(
-            BLOCKED_SLOTS.includes(key)
-        ){
-
-            button.classList.add("busy");
-
-            button.disabled = true;
-
-            button.title =
-                "Horario ocupado";
-
-        }
+            const key =
+                `${date}|${time}`;
 
 
-        /*
-            PENDIENTE LOCAL
+            /*
+                BLOQUEO MANUAL
+            */
 
-            Solo sirve como indicación visual
-            en el mismo navegador.
+            if(
+                BLOCKED_SLOTS.includes(key)
+            ){
 
-        */
+                button.classList.add("busy");
 
-        const pending =
-            localStorage.getItem(
-                "barber_pending_"+key
-            );
+                button.disabled = true;
 
+                button.title =
+                    "Horario ocupado";
 
-        if(
-            pending &&
-            !button.disabled
-        ){
-
-            button.classList.add(
-                "pending"
-            );
-
-            button.title =
-                "Solicitud enviada desde este dispositivo";
-
-        }
+            }
 
 
-        if(!button.disabled){
+            /*
+                PENDIENTE LOCAL
 
-            button.onclick = ()=>{
+                Solo funciona en el mismo
+                navegador/dispositivo.
+            */
 
-                document
-                    .querySelectorAll(".time")
-                    .forEach(t=>
-                        t.classList
-                            .remove("selected")
-                    );
-
-                button.classList.add(
-                    "selected"
+            const pending =
+                safeStorageGet(
+                    "barber_pending_"+key
                 );
 
-                selectedTime = time;
 
-                updateAll();
+            if(
+                pending &&
+                !button.disabled
+            ){
 
-            };
+                button.classList.add(
+                    "pending"
+                );
+
+                button.title =
+                    "Solicitud enviada desde este dispositivo";
+
+            }
+
+
+            if(
+                !button.disabled
+            ){
+
+                button.addEventListener(
+                    "click",
+                    ()=>{
+
+                        $$(".time")
+                            .forEach(
+                                timeButton =>
+                                    timeButton
+                                        .classList
+                                        .remove(
+                                            "selected"
+                                        )
+                            );
+
+                        button.classList.add(
+                            "selected"
+                        );
+
+                        selectedTime = time;
+
+                        updateAll();
+
+                    }
+                );
+
+            }
+
+
+            container.appendChild(button);
 
         }
-
-
-        container.appendChild(button);
-
-    });
+    );
 
 
     updateAll();
@@ -3779,7 +5059,84 @@ function loadTimes(){
 
 
 /* =========================================================
-   SUMMARY
+   DATE CHANGE
+========================================================= */
+
+document.addEventListener(
+    "change",
+    event =>{
+
+        if(
+            event.target &&
+            event.target.id === "date"
+        ){
+
+            loadTimes();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SCHEDULE STEP VALIDATION
+========================================================= */
+
+function validateScheduleStep(){
+
+    const date =
+        document.getElementById("date").value;
+
+
+    if(!date){
+
+        alert(
+            "Selecciona una fecha."
+        );
+
+        return;
+
+    }
+
+
+    if(!selectedTime){
+
+        alert(
+            "Selecciona un horario."
+        );
+
+        return;
+
+    }
+
+
+    const key =
+        `${date}|${selectedTime}`;
+
+
+    if(
+        BLOCKED_SLOTS.includes(key)
+    ){
+
+        alert(
+            "Ese horario ya está ocupado. Selecciona otro."
+        );
+
+        loadTimes();
+
+        return;
+
+    }
+
+
+    nextStep(6);
+
+}
+
+
+/* =========================================================
+   UPDATE SUMMARY
 ========================================================= */
 
 function updateAll(){
@@ -3789,13 +5146,11 @@ function updateAll(){
     */
 
     const barber =
-        document
-            .querySelector(
-                'input[name="barber"]:checked'
-            )
-            ?.value
-            ||
-            "Sin preferencia";
+        $(
+            'input[name="barber"]:checked'
+        )?.value
+        ||
+        "Sin preferencia";
 
 
     /*
@@ -3803,10 +5158,9 @@ function updateAll(){
     */
 
     const service =
-        document
-            .querySelector(
-                'input[name="service"]:checked'
-            );
+        $(
+            'input[name="service"]:checked'
+        );
 
 
     const serviceName =
@@ -3817,8 +5171,7 @@ function updateAll(){
 
     const servicePrice =
         Number(
-            service?.dataset.price
-            ||
+            service?.dataset.price ||
             0
         );
 
@@ -3828,11 +5181,7 @@ function updateAll(){
     */
 
     const extras =
-        [
-            ...document.querySelectorAll(
-                ".extra input:checked"
-            )
-        ];
+        $$(".extra input:checked");
 
 
     let extrasPrice = 0;
@@ -3840,18 +5189,20 @@ function updateAll(){
     const extraNames = [];
 
 
-    extras.forEach(extra=>{
+    extras.forEach(
+        extra =>{
 
-        extrasPrice +=
-            Number(
-                extra.dataset.price
+            extrasPrice +=
+                Number(
+                    extra.dataset.price
+                );
+
+            extraNames.push(
+                extra.value
             );
 
-        extraNames.push(
-            extra.value
-        );
-
-    });
+        }
+    );
 
 
     /*
@@ -3864,30 +5215,32 @@ function updateAll(){
 
 
     Object.keys(quantities)
-        .forEach(key=>{
+        .forEach(
+            key =>{
 
-            const qty =
-                quantities[key];
-
-
-            if(qty > 0){
-
-                const subtotal =
-                    products[key].price *
-                    qty;
+                const qty =
+                    quantities[key];
 
 
-                productsPrice +=
-                    subtotal;
+                if(qty > 0){
+
+                    const subtotal =
+                        products[key].price *
+                        qty;
 
 
-                productNames.push(
-                    `${products[key].name} × ${qty}`
-                );
+                    productsPrice +=
+                        subtotal;
+
+
+                    productNames.push(
+                        `${products[key].name} × ${qty}`
+                    );
+
+                }
 
             }
-
-        });
+        );
 
 
     /*
@@ -3991,8 +5344,7 @@ function updateAll(){
             "summaryTime"
         )
         .textContent =
-            selectedTime
-            ||
+            selectedTime ||
             "—";
 
 
@@ -4148,20 +5500,17 @@ function sendWhatsApp(){
 
 
     const barber =
-        document
-            .querySelector(
-                'input[name="barber"]:checked'
-            )
-            ?.value
-            ||
-            "Sin preferencia";
+        $(
+            'input[name="barber"]:checked'
+        )?.value
+        ||
+        "Sin preferencia";
 
 
     const service =
-        document
-            .querySelector(
-                'input[name="service"]:checked'
-            );
+        $(
+            'input[name="service"]:checked'
+        );
 
 
     const serviceName =
@@ -4179,11 +5528,7 @@ function sendWhatsApp(){
     */
 
     const extras =
-        [
-            ...document.querySelectorAll(
-                ".extra input:checked"
-            )
-        ];
+        $$(".extra input:checked");
 
 
     let extrasPrice = 0;
@@ -4191,19 +5536,20 @@ function sendWhatsApp(){
     const extraNames = [];
 
 
-    extras.forEach(extra=>{
+    extras.forEach(
+        extra =>{
 
-        extrasPrice +=
-            Number(
-                extra.dataset.price
+            extrasPrice +=
+                Number(
+                    extra.dataset.price
+                );
+
+            extraNames.push(
+                `${extra.value} — $${extra.dataset.price}`
             );
 
-
-        extraNames.push(
-            `${extra.value} — $${extra.dataset.price}`
-        );
-
-    });
+        }
+    );
 
 
     /*
@@ -4216,30 +5562,32 @@ function sendWhatsApp(){
 
 
     Object.keys(quantities)
-        .forEach(key=>{
+        .forEach(
+            key =>{
 
-            const qty =
-                quantities[key];
-
-
-            if(qty > 0){
-
-                const subtotal =
-                    products[key].price *
-                    qty;
+                const qty =
+                    quantities[key];
 
 
-                productsPrice +=
-                    subtotal;
+                if(qty > 0){
+
+                    const subtotal =
+                        products[key].price *
+                        qty;
 
 
-                productNames.push(
-                    `${products[key].name} x${qty} — $${subtotal}`
-                );
+                    productsPrice +=
+                        subtotal;
+
+
+                    productNames.push(
+                        `${products[key].name} x${qty} — $${subtotal}`
+                    );
+
+                }
 
             }
-
-        });
+        );
 
 
     /*
@@ -4281,8 +5629,7 @@ function sendWhatsApp(){
         WHATSAPP MESSAGE
     */
 
-    let message =
-
+    const message =
 `*BARBER HOUSE — SOLICITUD DE CITA*
 
 Hola, quiero solicitar una cita.
@@ -4312,17 +5659,25 @@ ${serviceName} — $${servicePrice} MXN
 
 *EXTRAS*
 
-${extraNames.length
-    ? extraNames.join("\n")
-    : "Ninguno"}
+${
+    extraNames.length
+    ?
+    extraNames.join("\n")
+    :
+    "Ninguno"
+}
 
 ━━━━━━━━━━━━━━━━
 
 *PRODUCTOS*
 
-${productNames.length
-    ? productNames.join("\n")
-    : "Ninguno"}
+${
+    productNames.length
+    ?
+    productNames.join("\n")
+    :
+    "Ninguno"
+}
 
 ━━━━━━━━━━━━━━━━
 
@@ -4330,13 +5685,17 @@ ${productNames.length
 
 $${total.toLocaleString("es-MX")} MXN
 
-${notes
-    ? `━━━━━━━━━━━━━━━━
+${
+    notes
+    ?
+    `━━━━━━━━━━━━━━━━
 
 *NOTA*
 
 ${notes}`
-    : ""}
+    :
+    ""
+}
 
 ━━━━━━━━━━━━━━━━
 
@@ -4344,15 +5703,15 @@ ${notes}`
 
 
     /*
-        MARCAR COMO SOLICITUD PENDIENTE
-        EN EL DISPOSITIVO ACTUAL
+        MARCAR COMO PENDIENTE
+        SOLO EN EL DISPOSITIVO ACTUAL
     */
 
     const key =
         `${date}|${selectedTime}`;
 
 
-    localStorage.setItem(
+    safeStorageSet(
         "barber_pending_"+key,
         JSON.stringify({
             name:name,
@@ -4363,7 +5722,7 @@ ${notes}`
 
 
     /*
-        ABRIR WHATSAPP
+        WHATSAPP URL
     */
 
     const whatsappURL =
@@ -4375,12 +5734,6 @@ ${notes}`
         );
 
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
-
-
     /*
         MODAL
     */
@@ -4390,11 +5743,29 @@ ${notes}`
         .classList
         .add("show");
 
+
+    /*
+        Abrir WhatsApp después
+        de mostrar la confirmación.
+    */
+
+    setTimeout(
+        ()=>{
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+        },
+        250
+    );
+
 }
 
 
 /* =========================================================
-   CLOSE MODAL
+   MODAL
 ========================================================= */
 
 function closeModal(){
@@ -4405,6 +5776,90 @@ function closeModal(){
         .remove("show");
 
     loadTimes();
+
+}
+
+
+/*
+    Cerrar modal tocando
+    fuera de la tarjeta.
+*/
+
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        event =>{
+
+            if(
+                event.target.id === "modal"
+            ){
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+/*
+    ESC para cerrar modal.
+*/
+
+document.addEventListener(
+    "keydown",
+    event =>{
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SAFE LOCAL STORAGE
+========================================================= */
+
+function safeStorageGet(key){
+
+    try{
+
+        return localStorage.getItem(key);
+
+    }catch(error){
+
+        return null;
+
+    }
+
+}
+
+
+function safeStorageSet(key,value){
+
+    try{
+
+        localStorage.setItem(
+            key,
+            value
+        );
+
+    }catch(error){
+
+        /*
+            Si el navegador bloquea
+            localStorage, la página
+            continúa funcionando.
+        */
+
+    }
 
 }
 
